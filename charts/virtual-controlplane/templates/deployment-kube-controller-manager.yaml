@@ -1,0 +1,120 @@
+# Copyright 2019 Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, v. 2 except as noted otherwise in the LICENSE file.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-controller-manager
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: virtual-controlplane
+    component: kube-controller-manager
+spec:
+  revisionHistoryLimit: 0
+  replicas: {{ .Values.replicas.kubeControllerManager }}
+  selector:
+    matchLabels:
+      app: virtual-controlplane
+      component: kube-controller-manager
+  template:
+    metadata:
+      annotations:
+        checksum/secret-kube-apiserver-ca: {{ include (print $.Template.BasePath "/secret-kube-apiserver-ca.yaml") . | sha256sum }}
+        checksum/secret-kube-apiserver-server: {{ include (print $.Template.BasePath "/secret-kube-apiserver-server-tls.yaml") . | sha256sum }}
+        checksum/secret-kube-apiserver-basic-auth: {{ include (print $.Template.BasePath "/secret-kube-apiserver-basic-auth.yaml") . | sha256sum }}
+        checksum/secret-kube-controller-manager-client: {{ include (print $.Template.BasePath "/secret-kube-controller-manager-tls.yaml") . | sha256sum }}
+        checksum/secret-service-account-key: {{ include (print $.Template.BasePath "/secret-service-account-key.yaml") . | sha256sum }}
+        {{- if .Values.tls.identity }}
+        checksum/secret-identity-ca: {{ include (print $.Template.BasePath "/secret-identity-ca.yaml") . | sha256sum }}
+        {{- end }}
+      labels:
+        app: virtual-controlplane
+        component: kube-controller-manager
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - virtual-controlplane
+                - key: component
+                  operator: In
+                  values:
+                  - kube-controller-manager
+      tolerations:
+      - effect: NoExecute
+        operator: Exists
+      containers:
+      - name: kube-controller-manager
+        image: {{ .Values.images.kubeControllerManager }}
+        imagePullPolicy: IfNotPresent
+        command:
+        - /usr/local/bin/kube-controller-manager
+        - --cluster-signing-cert-file=/srv/kubernetes/ca/ca.crt
+        - --cluster-signing-key-file=/srv/kubernetes/ca/ca.key
+        - --controllers=namespace,serviceaccount,serviceaccount-token,clusterrole-aggregation,garbagecollector,csrapproving,csrcleaner,csrsigning,bootstrapsigner,tokencleaner
+        - --authorization-kubeconfig=/srv/kubernetes/controller-manager/kubeconfig
+        - --authentication-kubeconfig=/srv/kubernetes/controller-manager/kubeconfig
+        - --kubeconfig=/srv/kubernetes/controller-manager/kubeconfig
+        - --root-ca-file=/srv/kubernetes/ca/ca.crt
+        - --service-account-private-key-file=/srv/kubernetes/service-account-key/service_account.key
+        - --use-service-account-credentials=true
+        - --v=2
+        livenessProbe:
+          failureThreshold: 2
+          httpGet:
+            path: /healthz
+            port: 10252
+            scheme: HTTP
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 15
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 128Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - name: ca-kube-apiserver
+          mountPath: /srv/kubernetes/ca
+        - name: kube-controller-manager
+          mountPath: /srv/kubernetes/controller-manager
+        - name: service-account-key
+          mountPath: /srv/kubernetes/service-account-key
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: ca-kube-apiserver
+        secret:
+          secretName: kube-apiserver-ca
+      - name: kube-controller-manager
+        secret:
+          secretName: kube-controller-manager
+      - name: service-account-key
+        secret:
+          secretName: service-account-key
+

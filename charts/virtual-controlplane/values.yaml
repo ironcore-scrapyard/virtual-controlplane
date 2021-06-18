@@ -1,0 +1,38 @@
+serviceName: kube-apiserver
+images:
+  kubeAPIServer: k8s.gcr.io/kube-apiserver:v1.20.5
+  kubeControllerManager: k8s.gcr.io/kube-controller-manager:v1.20.5
+
+replicas:
+  kubeAPIServer: 3
+  kubeControllerManager: 2
+
+etcd:
+  main:
+    endpoints:
+  events:
+    endpoints:
+
+apiServer:
+  hostname: apiserver-hostname
+#   serviceName: kube-apiserver
+#   oidcIssuerURL: https://identity.URL
+
+tls:
+  kubeAPIServer:
+    ca:
+      crt: ca-certificate
+      key: ca-key
+    server:
+      crt: server-certificate
+      key: server-key
+    staticToken: password
+  kubeControllerManager:
+    crt: client-certificate
+    key: client-key
+  admin:
+    crt: client-certificate
+    key: client-key
+  serviceAccountKey: key
+  identity:
+    ca:

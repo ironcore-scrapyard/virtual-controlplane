@@ -1,0 +1,24 @@
+{
+  "CN": "kubernetes",
+  "hosts": [
+    "127.0.0.1",
+    "<MASTER_IP>",
+    "<MASTER_CLUSTER_IP>",
+    "kubernetes",
+    "kubernetes.default",
+    "kubernetes.default.svc",
+    "kubernetes.default.svc.cluster",
+    "kubernetes.default.svc.cluster.local"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [{
+    "C": "<country>",
+    "ST": "<state>",
+    "L": "<city>",
+    "O": "<organization>",
+    "OU": "<organization unit>"
+  }]
+}

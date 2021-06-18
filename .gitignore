@@ -1,0 +1,6 @@
+auth/
+.vscode/
+.idea/
+gen/
+dev/
+kubeconfig
