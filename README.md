@@ -8,3 +8,8 @@ The API server can be deployed using various storage backends
 * Postgress
 * CockroachDB
 
+## Usage
+
+```shell
+helm repo add vc https://onmetal.github.io/virtual-controlplane/
+```
