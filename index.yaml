@@ -1,0 +1,25 @@
+apiVersion: v1
+entries:
+  kine:
+  - apiVersion: v2
+    appVersion: 0.6.1
+    created: "2021-06-18T21:17:32.942456456Z"
+    description: A Helm chart for Kine
+    digest: f9b01e756c38a40662eeb10e61653265d4d3b40ab9346db2f1cd6001f2d23987
+    name: kine
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/kine-0.1.0/kine-0.1.0.tgz
+    version: 0.1.0
+  virtual-controlplane:
+  - apiVersion: v2
+    appVersion: 1.20.5
+    created: "2021-06-18T21:17:33.130545234Z"
+    description: A Helm chart for a Virtual Kubernetes controlplane
+    digest: b4e20a655d832ffc40af327c0620af0947f08fdd4bdfaeb7bd49312d06418396
+    name: virtual-controlplane
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/virtual-controlplane-0.1.0/virtual-controlplane-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-06-18T21:17:33.130551234Z"
