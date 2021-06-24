@@ -3323,8 +3323,7 @@
   "schemaVersion": 26,
   "style": "dark",
   "tags": [
-    "controlplane",
-    "seed"
+    "controlplane"
   ],
   "templating": {
     "list": [
