@@ -34,10 +34,16 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command:
           - /bin/kine
-          - --endpoint={{ .values.db.protocol }}://{{ .Values.db.user }}@{{ .Values.db.host }}:{{ .Values.db.port }}/{{ .Values.db.database }}
+          {{- if eq .Values.db.protocol "mysql" }}
+          - --endpoint={{ .Values.db.protocol }}://{{ .Values.db.user }}@tcp({{ .Values.db.host }}:{{ .Values.db.port }})/{{ .Values.db.database }}
+          {{- else }}
+          - --endpoint={{ .Values.db.protocol }}://{{ .Values.db.user }}@{{ .Values.db.host }}:{{ .Values.db.port }}/{{ .Values.db.database }}
+          {{- end }}
+          {{- if .Values.dbCertificates }}
           - --ca-file=/etc/dbcerts/ca
           - --cert-file=/etc/dbcerts/crt
           - --key-file=/etc/dbcerts/key
+          {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
@@ -60,9 +66,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
+          {{- if .Values.dbCertificates }}
           - name: dbcerts
             mountPath: "/etc/dbcerts"
             readOnly: true
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -75,9 +83,10 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- if .Values.dbCertificates }}
       volumes:
       - name: dbcerts
         secret:
           secretName: secret-db-certs
           defaultMode: 0600
-
+      {{- end }}
