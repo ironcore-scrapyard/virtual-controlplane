@@ -40,10 +40,10 @@ jobs:
       - name: deploy
         if: ${{ github.event_name == 'push' }}
         uses: peaceiris/actions-gh-pages@v3.8.0
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./site 
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./site 
       
       ## Helm chart releaseer      
       - name: Checkout
