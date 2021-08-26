@@ -12,18 +12,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Setup Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v2
         with:
           python-version: 3.x
+
       - name: install mkdocs-material & deps
         run: |
           pip install -r .github/requirements.txt
+
       - name: install mkdocs plugins
         run: |
           pip install -r docs/requirements.txt
           mkdocs build
+          
       - name: deploy
         if: ${{ github.event_name == 'push' }}
         uses: peaceiris/actions-gh-pages@v2.5.0
