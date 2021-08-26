@@ -1,0 +1,45 @@
+site_name: OnMetal Virtual Controlplane
+repo_url: https://github.com/onmetal/virtual-controlplane/
+edit_uri: edit/main/docs/
+theme:
+  name: material
+  logo: assets/logo.png
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: white
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: black
+    toggle:
+      icon: material/toggle-switch
+      name: Switch to light mode
+  font:
+    text: 'Work Sans'
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - codehilite
+  - admonition
+  - abbr
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Concepts: concept/index.md
+  - Architecture: architecture/index.md
+  - Usage: usage/index.md
+  - Developer Guide:
+      - Local Setup: development/setup.md
+      - Documentation: development/documentation.md
+      - Testing: development/testing.md
+      - Contribution Guide: development/contribution.md
