@@ -12,6 +12,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      ## Publish docs
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -30,7 +36,7 @@ jobs:
         run: |
           pip install -r docs/requirements.txt
           mkdocs build
-          
+
       - name: deploy
         if: ${{ github.event_name == 'push' }}
         uses: peaceiris/actions-gh-pages@v2.5.0
@@ -38,3 +44,19 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./site 
+      
+      ## Helm chart releaseer      
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.6.3
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.2.1
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
