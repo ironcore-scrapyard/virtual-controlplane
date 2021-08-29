@@ -22,7 +22,6 @@ theme:
 
 plugins:
   - search
-  - social
 
 markdown_extensions:
   - pymdownx.highlight
