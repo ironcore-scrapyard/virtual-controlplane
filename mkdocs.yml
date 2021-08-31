@@ -1,4 +1,4 @@
-site_name: OnMetal Virtual Controlplane
+site_name: Virtual Controlplane
 repo_url: https://github.com/onmetal/virtual-controlplane/
 edit_uri: edit/main/docs/
 theme:
@@ -29,14 +29,13 @@ markdown_extensions:
   - pymdownx.snippets
   - codehilite
   - admonition
+  - footnotes
   - abbr
   - toc:
       permalink: true
 
 nav:
   - Home: index.md
-  - Concepts: concept/index.md
-  - Architecture: architecture/index.md
   - Usage: usage/index.md
   - Developer Guide:
       - Local Setup: development/setup.md
