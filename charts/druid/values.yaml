@@ -1,0 +1,23 @@
+image:
+  repository: eu.gcr.io/gardener-project/gardener/etcd-druid
+  tag: v0.6.0
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+druid:
+  replicaCount: 1
+  port: 9569
+  leaderElection: true
+  workerCount: 3
+  ignoreOperationAnnotation: false
+  resources: {}
+  # resources:
+  #   limits:
+  #     cpu: 300m
+  #     memory: 512Mi
+  #   requests:
+  #     cpu: 50m
+  #     memory: 128Mi
+
+serviceAccount: etcd-druid
