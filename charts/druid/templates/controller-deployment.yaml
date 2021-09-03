@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: virtual-controlplane
+    component: etcd-druid
+spec:
+  replicas: {{ .Values.druid.replicaCount }}
+  selector:
+    matchLabels:
+      app: virtual-controlplane
+      component: etcd-druid
+  template:
+    metadata:
+      annotations:
+      labels:
+        app: virtual-controlplane
+        component: etcd-druid
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.serviceAccount }}
+      containers:
+      - name: etcd-druid
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy}}
+        command:
+        - /bin/etcd-druid
+        - --enable-leader-election={{ .Values.druid.leaderElection }}
+        - --ignore-operation-annotation={{ .Values.druid.ignoreOperationAnnotation }}
+        - --workers={{ .Values.druid.workerCount }}
+        resources:
+          {{- toYaml .Values.druid.resources | nindent 10 }}
+        ports:
+        - containerPort: {{ .Values.druid.port }}

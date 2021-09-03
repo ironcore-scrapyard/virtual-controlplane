@@ -36,10 +36,9 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Usage: usage/index.md
+  - Usage: 
+    - Local Setup: usage/local_setup.md
   - Developer Guide:
-      - Local Setup: development/setup.md
       - Documentation: development/documentation.md
-      - Testing: development/testing.md
       - Contribution Guide: development/contribution.md
   - OnMetal Documentation ⧉: https://onmetal.github.io/documentation/
