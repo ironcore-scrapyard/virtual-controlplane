@@ -1,0 +1,19 @@
+apiVersion: v1
+entries:
+  etcd-druid:
+  - apiVersion: v2
+    appVersion: 0.6.0
+    created: "2021-09-03T12:59:58.855048437Z"
+    description: Helm chart for etcd-druid.
+    digest: e5152fa2d39918b7d8a60fb0be94b3db4fd29c611f564ec5c1c9a944be177ae2
+    home: https://github.com/onmetal/virtual-controlplane/
+    maintainers:
+    - name: afritzler
+    name: etcd-druid
+    sources:
+    - https://github.com/onmetal/virtual-controlplane/charts/druid
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/etcd-druid-0.1.0/etcd-druid-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-09-03T12:59:58.855054437Z"
