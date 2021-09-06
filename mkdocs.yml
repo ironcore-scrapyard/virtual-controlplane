@@ -37,7 +37,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Usage: 
-    - Local Setup: usage/local_setup.md
+    - Helm Repository: usage/helm.md
+    - Etcd Druid: usage/druid.md
   - Developer Guide:
       - Documentation: development/documentation.md
       - Contribution Guide: development/contribution.md
