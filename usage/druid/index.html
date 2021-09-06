@@ -9,19 +9,19 @@
       
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
-        <title>Virtual Controlplane</title>
+        <title>Etcd Druid - Virtual Controlplane</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.be71726b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.be71726b.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -55,7 +55,7 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
   
     
-    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
       <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#virtual-controlplane" class="md-skip">
+        <a href="#etcd-druid" class="md-skip">
           Skip to content
         </a>
       
@@ -76,9 +76,9 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Virtual Controlplane" class="md-header__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="../.." title="Virtual Controlplane" class="md-header__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
       
-  <img src="assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Etcd Druid
             
           </span>
         </div>
@@ -194,9 +194,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Virtual Controlplane" class="md-nav__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="../.." title="Virtual Controlplane" class="md-nav__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
       
-  <img src="assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     Virtual Controlplane
@@ -223,58 +223,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#background" class="md-nav__link">
-    Background
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advantages" class="md-nav__link">
-    Advantages
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -285,12 +238,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         Usage
@@ -308,7 +263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="usage/helm/" class="md-nav__link">
+      <a href="../helm/" class="md-nav__link">
         Helm Repository
       </a>
     </li>
@@ -318,11 +273,65 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="usage/druid/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Etcd Druid
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Etcd Druid
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrade" class="md-nav__link">
+    Upgrade
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove" class="md-nav__link">
+    Remove
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -362,7 +371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="development/documentation/" class="md-nav__link">
+      <a href="../../development/documentation/" class="md-nav__link">
         Documentation
       </a>
     </li>
@@ -374,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="development/contribution/" class="md-nav__link">
+      <a href="../../development/contribution/" class="md-nav__link">
         Contribution Guide
       </a>
     </li>
@@ -428,15 +437,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#background" class="md-nav__link">
-    Background
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#advantages" class="md-nav__link">
-    Advantages
+  <a href="#upgrade" class="md-nav__link">
+    Upgrade
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove" class="md-nav__link">
+    Remove
   </a>
   
 </li>
@@ -453,45 +469,28 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/onmetal/virtual-controlplane/edit/main/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/onmetal/virtual-controlplane/edit/main/docs/usage/druid.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="virtual-controlplane">Virtual Controlplane<a class="headerlink" href="#virtual-controlplane" title="Permanent link">&para;</a></h1>
-<p>The project contains a collection of helm charts to deploy a virtual/nodeless <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/">Kubernetes API server</a>.</p>
-<h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
-<p>Why do we need such a thing as a nodeless Kubernetes cluster?</p>
-<p>When developing a custom controlplane by <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/">extending Kubernetes</a> and using the <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator Pattern</a> we typically might not be interested in objects like <code>Pods</code>, <code>Deployments</code> and others. The goal instead is to introduce new <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/">CustomResourceDefinitions</a> on which our controllers will operate by leveraging the concepts the Kubernetes API machinery is offering us. </p>
-<p>In order to do it, we will need certain things such as:</p>
-<ul>
-<li><code>etcd</code> server (ideally with a <a href="https://github.com/gardener/etcd-backup-restore">backup and restore sidecar</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>)</li>
-<li><code>kube-api-server</code> and <code>kube-controller-manager</code> </li>
-</ul>
-<p>Since this Kubernetes API server setup does not have any nodes, we don't need to deploy the <code>kube-scheduler</code> as we won't be deploying any <code>Pods</code>.</p>
-<p>Those components can be easily deployed on an existing Kubernetes cluster<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
-<p><img alt="virtual controlplane" src="assets/vc.png" /></p>
-<p>The figure above illustrates the core components which are deployed on a <em>vanilla</em> Kubernetes runtime cluster.</p>
-<p><img alt="virtual controlplane controller" src="assets/vc-controller.png" /></p>
-<p>Your custom controllers can now also be deployed on the same (or different) runtime cluster as illustrated in the image above.</p>
-<h2 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
-<p>The main advantage of this approach is, that controllers and the content inside of virtual Kubernetes API server are no longer physically bound to the underlying runtime cluster as your <abbr title="Custom Resource Definitions">CRDs</abbr> are not mixed with content of the runtime clusters API server.</p>
-<p>Since the virtual controlplane in our scenario is just another workload running in a Kubernetes cluster, it can be moved and restored to a different cluster in case disaster strikes and the runtime cluster becomes unavailable.</p>
-<p>Another advantage is, that the performance of the virtual Kubernetes API server becomes a lot more predictable since nobody besides your controllers<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> are working against it.</p>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>In our setup we are reusing the great work from the <a href="https://gardener.cloud/">Gardener</a> project.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>This can also be done on a classical virtual machine based setup.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>And maybe the <code>kube-controller-manager</code>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+                <h1 id="etcd-druid">Etcd Druid<a class="headerlink" href="#etcd-druid" title="Permanent link">&para;</a></h1>
+<p>The <a href="https://github.com/gardener/etcd-druid">etcd-druid</a> is an operator which manages <a href="https://etcd.io/">etcd</a> deployments inside a Kubernetes cluster.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p><code>etcd-druid</code> can be installed via <code>helm install</code> into your Kubernetes cluster. Please make sure you have configured the <code>helm repo</code> as described <a href="/usage/helm">here</a>.</p>
+<div class="highlight"><pre><span></span><code>helm -n onmetal install druid vc/etcd-druid
+</code></pre></div>
+<p>If you want to overwrite the default <code>values.yaml</code> you can do so by providing a custom configuration.</p>
+<div class="highlight"><pre><span></span><code>helm -n onmetal install druid vc/etcd-druid -f VALUES_DIR/druid-values.yaml
+</code></pre></div>
+<h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
+<p>To upgrade your <code>etcd-druid</code> deployment run:</p>
+<div class="highlight"><pre><span></span><code>helm -n onmetal upgrade druid vc/etcd-druid -f VALUES_DIR/druid-values.yaml
+</code></pre></div>
+<h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
+<p>To remove the installation run:</p>
+<div class="highlight"><pre><span></span><code>helm -n onmetal delete druid
+</code></pre></div>
                 
               
               
@@ -510,15 +509,30 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
+        
+        <a href="../helm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Helm Repository" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Helm Repository
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="usage/helm/" class="md-footer__link md-footer__link--next" aria-label="Next: Helm Repository" rel="next">
+        <a href="../../development/documentation/" class="md-footer__link md-footer__link--next" aria-label="Next: Documentation" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Helm Repository
+              Documentation
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -547,10 +561,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.56a63758.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56a63758.min.js"></script>
       
     
   </body>
