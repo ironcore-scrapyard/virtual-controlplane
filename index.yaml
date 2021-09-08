@@ -1,6 +1,37 @@
 apiVersion: v1
 entries:
+  etcd:
+  - apiVersion: v2
+    appVersion: 3.4.13
+    created: "2021-09-08T12:35:57.548765517Z"
+    description: Helm chart for deploying etcd through etcd druid.
+    digest: b2467f900b4186193277ad65c20f941a14798e9f2d8d4c80cc2fd1af8a406e34
+    home: https://github.com/onmetal/virtual-controlplane/
+    maintainers:
+    - name: afritzler
+    name: etcd
+    sources:
+    - https://github.com/onmetal/virtual-controlplane/charts/etcd
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/etcd-0.1.0/etcd-0.1.0.tgz
+    version: 0.1.0
   etcd-druid:
+  - apiVersion: v2
+    appVersion: 0.6.0
+    created: "2021-09-08T12:35:57.731566366Z"
+    description: Helm chart for etcd-druid.
+    digest: f54aaaf0fae5b71702b1595e41a5c9ebaccf3f7348a8fcf466b625f74fff8f65
+    home: https://github.com/onmetal/virtual-controlplane/
+    maintainers:
+    - name: afritzler
+    name: etcd-druid
+    sources:
+    - https://github.com/onmetal/virtual-controlplane/charts/druid
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/etcd-druid-0.1.1/etcd-druid-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 0.6.0
     created: "2021-09-03T12:59:58.855048437Z"
@@ -16,7 +47,37 @@ entries:
     urls:
     - https://github.com/onmetal/virtual-controlplane/releases/download/etcd-druid-0.1.0/etcd-druid-0.1.0.tgz
     version: 0.1.0
+  kine:
+  - apiVersion: v2
+    appVersion: 0.6.1
+    created: "2021-09-08T12:35:57.932197729Z"
+    description: A Helm chart for Kine
+    digest: e89f2d2d5f9f1eae36a3259be77f71827f0b1be6b7bb131a2e6058b4a2314061
+    maintainers:
+    - name: afritzler
+    name: kine
+    sources:
+    - https://github.com/onmetal/virtual-controlplane
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/kine-0.1.2/kine-0.1.2.tgz
+    version: 0.1.2
   virtual-controlplane:
+  - apiVersion: v2
+    appVersion: 1.20.5
+    created: "2021-09-08T12:35:58.128783089Z"
+    description: A Helm chart for a Virtual Kubernetes controlplane
+    digest: 2fcc43a11303f71abd79f46ae0ff60ab1e700482a1e23f6a62a81c0cfc04fd75
+    home: https://github.com/onmetal/virtual-controlplane/
+    maintainers:
+    - name: afritzler
+    name: virtual-controlplane
+    sources:
+    - https://github.com/onmetal/virtual-controlplane/charts/virtual-controlplane
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/virtual-controlplane-0.1.1/virtual-controlplane-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.20.5
     created: "2021-09-03T14:10:35.305087382Z"
@@ -32,4 +93,4 @@ entries:
     urls:
     - https://github.com/onmetal/virtual-controlplane/releases/download/virtual-controlplane-0.1.0/virtual-controlplane-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-03T14:10:35.305093181Z"
+generated: "2021-09-08T12:35:58.128827089Z"
