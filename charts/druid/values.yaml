@@ -1,16 +1,26 @@
 image:
+  # -- image location
   repository: eu.gcr.io/gardener-project/gardener/etcd-druid
+  # -- image version tag
   tag: v0.6.0
+  # -- pull policy
   pullPolicy: IfNotPresent
 
+# -- image pull secrets
 imagePullSecrets: []
 
 druid:
+  # -- pod instance count
   replicaCount: 1
+  # -- container port
   port: 9569
+  # -- perform leader election
   leaderElection: true
+  # -- number of workers
   workerCount: 3
-  ignoreOperationAnnotation: false
+  # -- ignore operation annotation
+  ignoreOperationAnnotation: true
+  # -- resource requests and limits for deployment
   resources: {}
   # resources:
   #   limits:
@@ -20,4 +30,5 @@ druid:
   #     cpu: 50m
   #     memory: 128Mi
 
+# -- service account to use
 serviceAccount: etcd-druid

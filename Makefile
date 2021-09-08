@@ -10,3 +10,6 @@ start-docs: ## Start the local mkdocs based development environment.
 
 clean-docs: ## Remove all local mkdocs Docker images (cleanup).
 	docker container prune --force --filter "label=project=onmetal_virtual_controlplane_documentation"
+
+helm-docs: ## Generate Helm chart documentation
+	helm-docs

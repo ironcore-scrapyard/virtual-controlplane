@@ -103,4 +103,3 @@ spec:
       - name: service-account-key
         secret:
           secretName: service-account-key
-

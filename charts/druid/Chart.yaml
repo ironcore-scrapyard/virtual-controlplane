@@ -2,7 +2,7 @@ apiVersion: v2
 description: Helm chart for etcd-druid.
 name: etcd-druid
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: 0.6.0
 engine: gotpl
 home: https://github.com/onmetal/virtual-controlplane/

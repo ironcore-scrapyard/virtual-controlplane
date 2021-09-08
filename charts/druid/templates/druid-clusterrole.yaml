@@ -38,7 +38,6 @@ rules:
   - watch
   - patch
   - update
-
 - apiGroups:
   - ""
   - apps
@@ -80,16 +79,22 @@ rules:
   - leases
   verbs:
   - create
-- apiGroups:
-  - coordination.k8s.io
-  resourceNames:
-  - druid-leader-election
-  resources:
-  - leases
-  verbs:
   - get
   - update
   - patch
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - cronjobs
+  verbs:
+  - create
+  - get
+  - update
+  - patch
+  - list
+  - watch
 - apiGroups:
   - ""
   resources:
