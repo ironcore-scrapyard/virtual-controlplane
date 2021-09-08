@@ -16,6 +16,9 @@ If you want to overwrite the default `values.yaml` you can do so by providing a 
 helm -n onmetal install druid vc/etcd-druid -f VALUES_DIR/druid-values.yaml
 ```
 
+!!! note
+    Please refer to the chart [readme](https://github.com/onmetal/virtual-controlplane/tree/main/charts/druid) for detailed information on the value parameters.
+
 ## Upgrade
 
 To upgrade your `etcd-druid` deployment run:

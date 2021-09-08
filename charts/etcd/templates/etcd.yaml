@@ -1,0 +1,64 @@
+apiVersion: druid.gardener.cloud/v1alpha1
+kind: Etcd
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: virtual-controlplane
+    component: etcd
+spec:
+  selector:
+    matchLabels:
+      app: etcd-statefulset
+      role: etcd
+  annotations:
+    app: etcd-statefulset
+    role: etcd
+  labels:
+    app: etcd-statefulset
+    role: etcd
+  etcd:
+  {{- if .Values.etcd.tls.enabled }}
+    tls:
+      serverTLSSecretRef:
+        name: etcd-server-tls
+        namespace: {{ .Release.Namespace }}
+      clientTLSSecretRef:
+        name: etcd-client-tls
+        namespace: {{ .Release.Namespace }}
+      tlsCASecretRef:
+        name: etcd-ca
+        namespace: {{ .Release.Namespace }}
+    {{- end }}
+    metrics: {{ .Values.etcd.metrics }}
+    defragmentationSchedule: {{ .Values.etcd.defragmentationSchedule }}
+    resources:
+    {{- toYaml .Values.etcd.resources | nindent 8 }}
+    clientPort: {{ .Values.etcd.clientPort }}
+    serverPort: {{ .Values.etcd.serverPort }}
+    quota: {{ .Values.etcd.quota }}
+  backup:
+    port: {{ .Values.backup.port }}
+    fullSnapshotSchedule: {{ .Values.backup.fullSnapshotSchedule }}
+    resources:
+    {{- toYaml .Values.backup.resources | nindent 6 }}
+    garbageCollectionPolicy: {{ .Values.backup.garbageCollectionPolicy }}
+    garbageCollectionPeriod: {{ .Values.backup.garbageCollectionPeriod }}
+    deltaSnapshotPeriod: {{ .Values.backup.deltaSnapshotPeriod }}
+    deltaSnapshotMemoryLimit: {{ .Values.backup.deltaSnapshotMemoryLimit }}
+    {{- if .Values.backup.store }}
+    store:
+    {{- toYaml .Values.backup.store | nindent 6 }}
+    {{- end }}
+    compression:
+      enabled: {{ .Values.backup.compression.enabled }}
+      policy: {{ .Values.backup.compression.policy }}
+  sharedConfig:
+    autoCompactionMode: {{ .Values.sharedConfig.autoCompactionMode }}
+    autoCompactionRetention: {{ .Values.sharedConfig.autoCompactionRetention }}
+  replicas: {{ .Values.replicas }}
+{{- if .Values.priorityClassName }}
+  priorityClassName: {{ .Values.priorityClassName }}
+{{- end }}
+  storageClass: {{ .Values.storageClass }}
+  storageCapacity: {{ .Values.storageCapacity }}

@@ -1,0 +1,91 @@
+{{- if .Values.etcd.tls.enabled }}
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned-issuer
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: etcd-ca
+  namespace: {{ .Release.Namespace }}
+spec:
+  isCA: true
+  commonName: etcd
+  secretName: etcd-ca
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: etcd-server
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: etcd-server-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+      - onmetal
+  commonName: etcd-server
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+    - localhost
+    - etcd-local
+    - etcd-client.{{ .Release.Namespace }}.svc
+    - etcd-client.{{ .Release.Namespace }}.svc.cluster.local
+  issuerRef:
+    name: etcd-ca
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: etcd-client
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: etcd-client-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+      - onmetal
+  commonName: etcd-client
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  issuerRef:
+    name: etcd-ca
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: etcd-ca
+  namespace: {{ .Release.Namespace }}
+spec:
+  ca:
+    secretName: etcd-ca
+{{- end }}

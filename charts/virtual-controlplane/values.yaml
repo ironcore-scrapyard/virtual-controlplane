@@ -35,4 +35,4 @@ tls:
     key: client-key
   serviceAccountKey: key
   identity:
-    ca:
+    ca: identity-ca

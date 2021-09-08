@@ -1,0 +1,71 @@
+etcd:
+  tls:
+    # -- enable etcd server tls
+    enabled: true
+
+  # -- resource requests and limits of etcd
+  resources:
+    limits:
+      cpu: 2500m
+      memory: 4Gi
+    requests:
+      cpu: 500m
+      memory: 1000Mi
+  # -- etcd metrics type
+  metrics: basic
+  # -- etcd defragmentation schedule
+  defragmentationSchedule: "0 */24 * * *"
+  # -- etcd server quota
+  quota: 8Gi
+  # -- etcd server port
+  serverPort: 2380
+  # -- etcd client port
+  clientPort: 2379
+
+sharedConfig:
+  # -- compaction mode
+  autoCompactionMode: periodic
+  # -- compaction retention
+  autoCompactionRetention: "30m"
+# -- replica count of the etcd statefulset
+replicas: 1
+# priorityClassName: foo
+
+# -- etcd pvc storage class
+storageClass: standard
+# -- etcd disk size
+storageCapacity: 1Gi
+
+backup:
+  # -- port of the backup sidecar
+  port: 8080
+  # -- schedule when to run the full backup
+  fullSnapshotSchedule: "0 */24 * * *"
+  # -- resource requests and limits of the backup sidecar
+  resources:
+    limits:
+      cpu: 500m
+      memory: 2Gi
+    requests:
+      cpu: 23m
+      memory: 128Mi
+  # -- garbage collection policy
+  garbageCollectionPolicy: Exponential
+  # -- garbage collection period
+  garbageCollectionPeriod: 43200s
+  # -- delta snapshot period
+  deltaSnapshotPeriod: 300s
+  # -- delate snapshot memory limit
+  deltaSnapshotMemoryLimit: 1Gi
+  # -- backup bucket configuration
+  # store:
+  #   secretRef:
+  #     name: etcd-backup
+  #   container: mybackupcontainer
+  #   provider: aws
+  #   prefix: etcd-test
+  compression:
+    # -- enable/disable backup compression
+    enabled: false
+    # -- backup compression policy
+    policy: "gzip"
