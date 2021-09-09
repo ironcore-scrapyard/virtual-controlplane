@@ -1,5 +1,6 @@
 site_name: Virtual Controlplane
 repo_url: https://github.com/onmetal/virtual-controlplane/
+site_url: https://onmetal.github.io/virtual-controlplane/
 edit_uri: edit/main/docs/
 theme:
   name: material
@@ -36,7 +37,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Usage: 
+  - Usage:
     - Overview: usage/overview.md
     - Helm Repository: usage/helm.md
     - Cert Manager: usage/cert-manager.md

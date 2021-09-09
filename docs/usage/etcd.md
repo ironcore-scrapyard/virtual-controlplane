@@ -17,7 +17,7 @@ helm -n onmetal install etcd vc/etcd -f VALUES_DIR/etcd-values.yaml
 ```
 
 !!! note
-    Please refer to the chart [readme](https://github.com/onmetal/virtual-controlplane/tree/main/charts/etcd) for detailed information on the value parameters.
+    Please refer to the chart [README](https://github.com/onmetal/virtual-controlplane/tree/main/charts/etcd) for detailed information on the value parameters.
 
 ## Upgrade
 
