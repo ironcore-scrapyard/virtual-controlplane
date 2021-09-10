@@ -1,6 +1,6 @@
 # etcd
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.4.13](https://img.shields.io/badge/AppVersion-3.4.13-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.4.13](https://img.shields.io/badge/AppVersion-3.4.13-informational?style=flat-square)
 
 Helm chart for deploying etcd through etcd druid.
 
@@ -25,7 +25,7 @@ Helm chart for deploying etcd through etcd druid.
 | backup.port | int | `8080` | port of the backup sidecar |
 | backup.resources | object | `{"limits":{"cpu":"500m","memory":"2Gi"},"requests":{"cpu":"23m","memory":"128Mi"}}` | resource requests and limits of the backup sidecar |
 | etcd.clientPort | int | `2379` | etcd client port |
-| etcd.defragmentationSchedule | string | `"0 */24 * * *"` | etcd defragmentation schedule  |
+| etcd.defragmentationSchedule | string | `"0 */24 * * *"` | etcd defragmentation schedule |
 | etcd.metrics | string | `"basic"` | etcd metrics type |
 | etcd.quota | string | `"8Gi"` | etcd server quota |
 | etcd.resources | object | `{"limits":{"cpu":"2500m","memory":"4Gi"},"requests":{"cpu":"500m","memory":"1000Mi"}}` | resource requests and limits of etcd |

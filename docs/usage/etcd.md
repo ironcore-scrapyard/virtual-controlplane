@@ -1,6 +1,6 @@
 # Etcd
 
-[etcd](https://etcd.io/) is the main backend storage of the Kubernetes API server. We will be using our [etcd-druid](/usage/druid) operator to deploy a production ready etcd cluster.
+[etcd](https://etcd.io/) is the main backend storage of the Kubernetes API server. We will be using our [etcd-druid](/virtual-controlplane/usage/druid) operator to deploy a production ready etcd cluster.
 
 ## Installation
 

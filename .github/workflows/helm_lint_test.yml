@@ -49,7 +49,6 @@ jobs:
           install_local_path_provisioner: true
         if: steps.list-changed.outputs.changed == 'true'
 
-      - name: Run chart-testing (install)
-        id: install
-        if: steps.list-changed.outputs.changed == 'true'
-        run: ct install --config ct.yml
+      - name: Test virtual-controlplane deployment
+        run: |
+          ./hack/test_stack.sh

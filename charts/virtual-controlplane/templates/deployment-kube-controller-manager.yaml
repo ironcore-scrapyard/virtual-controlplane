@@ -8,22 +8,16 @@ metadata:
     component: kube-controller-manager
 spec:
   revisionHistoryLimit: 0
-  replicas: {{ .Values.replicas.kubeControllerManager }}
+  replicas: {{ .Values.controllerManager.replicas }}
   selector:
     matchLabels:
       app: virtual-controlplane
       component: kube-controller-manager
   template:
     metadata:
-      annotations:
-        checksum/secret-kube-apiserver-ca: {{ include (print $.Template.BasePath "/secret-kube-apiserver-ca.yaml") . | sha256sum }}
-        checksum/secret-kube-apiserver-server: {{ include (print $.Template.BasePath "/secret-kube-apiserver-server-tls.yaml") . | sha256sum }}
-        checksum/secret-kube-apiserver-basic-auth: {{ include (print $.Template.BasePath "/secret-kube-apiserver-basic-auth.yaml") . | sha256sum }}
-        checksum/secret-kube-controller-manager-client: {{ include (print $.Template.BasePath "/secret-kube-controller-manager-tls.yaml") . | sha256sum }}
-        checksum/secret-service-account-key: {{ include (print $.Template.BasePath "/secret-service-account-key.yaml") . | sha256sum }}
-        {{- if .Values.tls.identity }}
-        checksum/secret-identity-ca: {{ include (print $.Template.BasePath "/secret-identity-ca.yaml") . | sha256sum }}
-        {{- end }}
+    {{- if .Values.controllerManager.podAnnotations }}
+      annotations: {{ toYaml .Values.controllerManager.podAnnotations | nindent 8 }}
+    {{- end }}
       labels:
         app: virtual-controlplane
         component: kube-controller-manager
@@ -49,44 +43,42 @@ spec:
         operator: Exists
       containers:
       - name: kube-controller-manager
-        image: {{ .Values.images.kubeControllerManager }}
-        imagePullPolicy: IfNotPresent
+        image: {{ .Values.controllerManager.image.repository }}:{{ .Values.controllerManager.image.tag}}
+        imagePullPolicy: {{ .Values.controllerManager.image.pullPolicy }}
         command:
         - /usr/local/bin/kube-controller-manager
+        - --cluster-name=kubernetes
+        - --bind-address=0.0.0.0
         - --cluster-signing-cert-file=/srv/kubernetes/ca/ca.crt
-        - --cluster-signing-key-file=/srv/kubernetes/ca/ca.key
-        - --controllers=namespace,serviceaccount,serviceaccount-token,clusterrole-aggregation,garbagecollector,csrapproving,csrcleaner,csrsigning,bootstrapsigner,tokencleaner
+        - --cluster-signing-key-file=/srv/kubernetes/ca/tls.key
+        - --controllers=*,bootstrapsigner,tokencleaner
         - --authorization-kubeconfig=/srv/kubernetes/controller-manager/kubeconfig
         - --authentication-kubeconfig=/srv/kubernetes/controller-manager/kubeconfig
         - --kubeconfig=/srv/kubernetes/controller-manager/kubeconfig
         - --root-ca-file=/srv/kubernetes/ca/ca.crt
-        - --service-account-private-key-file=/srv/kubernetes/service-account-key/service_account.key
+        - --leader-elect=true
+        - --service-account-private-key-file=/srv/kubernetes/service-account-key/tls.key
         - --use-service-account-credentials=true
         - --v=2
         livenessProbe:
           failureThreshold: 2
           httpGet:
             path: /healthz
-            port: 10252
-            scheme: HTTP
+            port: 10257
+            scheme: HTTPS
           initialDelaySeconds: 15
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 15
         resources:
-          limits:
-            cpu: 500m
-            memory: 512Mi
-          requests:
-            cpu: 200m
-            memory: 128Mi
+          {{- toYaml .Values.controllerManager.resources | nindent 10 }}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
         - name: ca-kube-apiserver
           mountPath: /srv/kubernetes/ca
-        - name: kube-controller-manager
-          mountPath: /srv/kubernetes/controller-manager
+        - name: kube-controller-manager-kubeconfig
+          mountPath: /srv/kubernetes/controller-manager/
         - name: service-account-key
           mountPath: /srv/kubernetes/service-account-key
       dnsPolicy: ClusterFirst
@@ -96,10 +88,10 @@ spec:
       volumes:
       - name: ca-kube-apiserver
         secret:
-          secretName: kube-apiserver-ca
-      - name: kube-controller-manager
+          secretName: {{ .Values.apiServer.tls.ca.secretName }}
+      - name: kube-controller-manager-kubeconfig
         secret:
-          secretName: kube-controller-manager
+          secretName: {{ .Values.controllerManager.kubeconfigSecretName }}
       - name: service-account-key
         secret:
-          secretName: service-account-key
+          secretName: kube-apiserver-sa
