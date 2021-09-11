@@ -9,6 +9,8 @@
       
       
       
+        <link rel="canonical" href="https://onmetal.github.io/virtual-controlplane/usage/etcd/">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
@@ -511,7 +513,7 @@
                 
                 
                 <h1 id="etcd">Etcd<a class="headerlink" href="#etcd" title="Permanent link">&para;</a></h1>
-<p><a href="https://etcd.io/">etcd</a> is the main backend storage of the Kubernetes API server. We will be using our <a href="/usage/druid">etcd-druid</a> operator to deploy a production ready etcd cluster.</p>
+<p><a href="https://etcd.io/">etcd</a> is the main backend storage of the Kubernetes API server. We will be using our <a href="/virtual-controlplane/usage/druid">etcd-druid</a> operator to deploy a production ready etcd cluster.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p><code>etcd</code> can be installed via <code>helm install</code> into your Kubernetes cluster. Please make sure you have configured the <code>helm repo</code> as described <a href="/usage/helm">here</a>.</p>
 <div class="highlight"><pre><span></span><code>helm -n onmetal install etcd vc/etcd
@@ -521,7 +523,7 @@
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Please refer to the chart <a href="https://github.com/onmetal/virtual-controlplane/tree/main/charts/etcd">readme</a> for detailed information on the value parameters.</p>
+<p>Please refer to the chart <a href="https://github.com/onmetal/virtual-controlplane/tree/main/charts/etcd">README</a> for detailed information on the value parameters.</p>
 </div>
 <h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
 <p>To upgrade your <code>etcd</code> deployment run:</p>
