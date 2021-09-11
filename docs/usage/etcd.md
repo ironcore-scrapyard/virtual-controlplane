@@ -1,6 +1,6 @@
 # Etcd
 
-[etcd](https://etcd.io/) is the main backend storage of the Kubernetes API server. We will be using our [etcd-druid](/usage/druid) operator to deploy a production ready etcd cluster.
+[etcd](https://etcd.io/) is the main backend storage of the Kubernetes API server. We will be using our [etcd-druid](/virtual-controlplane/usage/druid) operator to deploy a production ready etcd cluster.
 
 ## Installation
 
@@ -17,7 +17,7 @@ helm -n onmetal install etcd vc/etcd -f VALUES_DIR/etcd-values.yaml
 ```
 
 !!! note
-    Please refer to the chart [readme](https://github.com/onmetal/virtual-controlplane/tree/main/charts/etcd) for detailed information on the value parameters.
+    Please refer to the chart [README](https://github.com/onmetal/virtual-controlplane/tree/main/charts/etcd) for detailed information on the value parameters.
 
 ## Upgrade
 

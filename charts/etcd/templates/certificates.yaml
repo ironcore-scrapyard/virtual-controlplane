@@ -16,8 +16,13 @@ spec:
   commonName: etcd
   secretName: etcd-ca
   privateKey:
-    algorithm: ECDSA
-    size: 256
+    algorithm: RSA
+    size: 2048
+  usages:
+    - signing
+    - key encipherment
+    - server auth
+    - client auth
   issuerRef:
     name: selfsigned-issuer
     kind: ClusterIssuer
@@ -32,9 +37,6 @@ spec:
   secretName: etcd-server-tls
   duration: 2160h # 90d
   renewBefore: 360h # 15d
-  subject:
-    organizations:
-      - onmetal
   commonName: etcd-server
   isCA: false
   privateKey:
@@ -47,6 +49,7 @@ spec:
   dnsNames:
     - localhost
     - etcd-local
+    - etcd-client
     - etcd-client.{{ .Release.Namespace }}.svc
     - etcd-client.{{ .Release.Namespace }}.svc.cluster.local
   issuerRef:
@@ -63,9 +66,6 @@ spec:
   secretName: etcd-client-tls
   duration: 2160h # 90d
   renewBefore: 360h # 15d
-  subject:
-    organizations:
-      - onmetal
   commonName: etcd-client
   isCA: false
   privateKey:

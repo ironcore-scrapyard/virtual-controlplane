@@ -1,38 +1,98 @@
-serviceName: kube-apiserver
-images:
-  kubeAPIServer: k8s.gcr.io/kube-apiserver:v1.20.5
-  kubeControllerManager: k8s.gcr.io/kube-controller-manager:v1.20.5
-
-replicas:
-  kubeAPIServer: 3
-  kubeControllerManager: 2
-
-etcd:
-  main:
-    endpoints:
-  events:
-    endpoints:
-
 apiServer:
-  hostname: apiserver-hostname
-#   serviceName: kube-apiserver
-#   oidcIssuerURL: https://identity.URL
-
-tls:
-  kubeAPIServer:
+  # -- ingress dns name for the api server
+  externalDNSName: apiserver-hostname
+  # -- api server service name
+  serviceName: kube-apiserver
+  # -- api server url
+  serviceURL: https://kube-apiserver:443
+  #   oidcIssuerURL: https://identity.URL
+  image:
+    # -- kube-apiserver image location
+    repository: k8s.gcr.io/kube-apiserver
+    # -- kube-apiserver image version tag
+    tag: v1.22.1
+    # -- kube-apiserver pull policy
+    pullPolicy: IfNotPresent
+  # -- annotations for the api server deployment
+  podAnnotations: {}
+  # -- kube-apiserver replica count
+  replicas: 1
+  tls:
     ca:
-      crt: ca-certificate
-      key: ca-key
-    server:
-      crt: server-certificate
-      key: server-key
-    staticToken: password
-  kubeControllerManager:
-    crt: client-certificate
-    key: client-key
-  admin:
-    crt: client-certificate
-    key: client-key
-  serviceAccountKey: key
-  identity:
-    ca: identity-ca
+      # -- kubernetes cluster ca secret name
+      secretName: kubernetes-ca
+    # -- api server tls secret name
+    secretName: kube-apiserver-tls
+    # -- bearer token to access the api server
+    staticToken: trallala
+  # identity:
+  #   ca: identity-ca
+  etcd:
+    secretNames:
+      # -- secret name holding the CA of the etcd
+      ca: etcd-ca
+      # -- secret name of the etcd client certificates
+      client: etcd-client-tls
+    main:
+      # -- endpoints of the main etcd server
+      endpoints: https://etcd-client:2379
+    # events: {}
+    #   secretsName:
+    #   # -- endpoints of the events etcd server
+    #   endpoints: https://etcd-client:2379
+    # -- resource requests and limits
+    resources: {}
+      # limits:
+      #   cpu: 1200m
+      #   memory: 2000Mi
+      # requests:
+      #   cpu: 200m
+      #   memory: 512Mi
+
+controllerManager:
+  image:
+    # -- kube-controller-manager image location
+    repository: k8s.gcr.io/kube-controller-manager
+    # -- kube-controller-manager image version tag
+    tag: v1.22.1
+    # -- kube-controller-manager pull policy
+    pullPolicy: IfNotPresent
+  # -- kube-controller-manager replica count
+  replicas: 1
+  # -- username used in the kubeconfig of the controller manager
+  username: system:kube-controller-manager
+  # -- kubeconfig context name
+  contextName: default
+  tls:
+    # -- secret name containing tls certificates of the controller manager
+    secretName: kube-controller-manager-client-tls
+  # -- secret name containing the kubeconfig for the controller manager
+  kubeconfigSecretName: kube-controller-manager-kubeconfig
+  # -- resource requests and limits
+  resources: {}
+    # limits:
+    #   cpu: 500m
+    #   memory: 512Mi
+    # requests:
+    #   cpu: 200m
+    #   memory: 128Mi
+
+admin:
+  # -- username in the admin kubeconfig
+  username: admin
+  tls:
+    secretName: admin
+  # -- kubeconfig context name
+  contextName: onmetal
+
+ingress:
+  # -- create an ingress for the api server
+  enable: false
+  # -- use tls for ingress
+  useTLS: false
+
+certificates:
+  # -- create self signed issuer
+  createClusterIssuer: false
+  # -- self signed issuer name
+  clusterIssuerName: selfsigned-issuer

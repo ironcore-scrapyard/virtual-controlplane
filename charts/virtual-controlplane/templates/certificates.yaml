@@ -1,0 +1,149 @@
+{{- if .Values.certificates.createClusterIssuer }}
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: {{ .Values.certificates.clusterIssuerName }}
+spec:
+  selfSigned: {}
+{{- end }}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kuberntes-ca
+  namespace: {{ .Release.Namespace }}
+spec:
+  isCA: true
+  commonName: kubernetes
+  secretName: kubernetes-ca
+  privateKey:
+    algorithm: RSA
+    size: 2048
+  usages:
+    - signing
+    - key encipherment
+    - server auth
+    - client auth
+  issuerRef:
+    name: {{ .Values.certificates.clusterIssuerName }}
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kube-apiserver
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: {{ .Values.apiServer.tls.secretName }}
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  commonName: kubernetes
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  {{- if .Values.apiServer.externalDNSName }}
+    - {{ .Values.apiServer.externalDNSName }}
+  {{- end }}
+    - {{ .Values.apiServer.serviceName }}
+    - localhost
+    - kubernetes
+    - kubernetes.default
+    - kubernetes.default.svc
+    - kubernetes.default.svc.cluster
+    - kubernetes.default.svc.cluster.local
+  ipAddresses:
+    - 127.0.0.1
+  issuerRef:
+    name: kubernetes-ca
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kube-controller-manager-client
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: kube-controller-manager-client-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  commonName: system:kube-controller-manager
+  subject:
+    organizations:
+      - system:kube-controller-manager
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  issuerRef:
+    name: kubernetes-ca
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kube-apiserver-sa
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: kube-apiserver-sa
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  commonName: service-accounts
+  subject:
+    organizations:
+      - Kubernetes
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  issuerRef:
+    name: kubernetes-ca
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: admin
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: admin
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  commonName: admin
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    size: 2048
+  subject:
+    organizations:
+      - system:masters
+  usages:
+    - server auth
+    - client auth
+  issuerRef:
+    name: kubernetes-ca
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: kubernetes-ca
+  namespace: {{ .Release.Namespace }}
+spec:
+  ca:
+    secretName: kubernetes-ca
