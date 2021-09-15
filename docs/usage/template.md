@@ -1,8 +1,8 @@
 # Template Operator
 
 The [template-operator](https://github.com/onmetal/template-operator) is used to create derived objects from other Kubernetes objects.
-It is for example possible to create a `Secret` containing the `kubeconfig` from other `Secrets` or `ConfigMaps` which contain the TLS
-certificates and other information needed to generating a `kubeconfig`.
+It is for example possible to create a `Secret` containing the `kubeconfig` from other `Secrets` or `ConfigMaps` which contains the TLS
+certificates and other information needed to generate a `kubeconfig`.
 
 ## Installation
 
