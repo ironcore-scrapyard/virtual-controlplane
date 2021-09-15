@@ -22,7 +22,7 @@ apiServer:
 ```
 
 !!!note
-        The helm installation will run through without changing those values. This might be OK if you deploy it into a local Minikube or Kind cluster. However you won't be able to access your cluster since the `Ingress` won't be configured correctly. Also there is a huge security risk as the static token to can be guessed relatively easy exposing your API server to fraudulent access.
+        The helm installation will run through without changing those values. This might be OK if you deploy it into a local Minikube or Kind cluster. However you won't be able to access your cluster since the `Ingress` won't be configured correctly. Note, that there is a huge security risk as the static token can be guessed relatively easy exposing your API server to fraudulent access.
 
 ## Installation
 
