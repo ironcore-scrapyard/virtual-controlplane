@@ -110,6 +110,21 @@ entries:
   virtual-controlplane:
   - apiVersion: v2
     appVersion: 1.22.1
+    created: "2021-09-15T14:30:22.379433011Z"
+    description: A Helm chart for a Virtual Kubernetes controlplane
+    digest: 7fc2db695c49c3030f11a91414f2b42584a104fd3d747bd2fecabd17a10f0160
+    home: https://github.com/onmetal/virtual-controlplane/
+    maintainers:
+    - name: afritzler
+    name: virtual-controlplane
+    sources:
+    - https://github.com/onmetal/virtual-controlplane/charts/virtual-controlplane
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/virtual-controlplane-0.1.4/virtual-controlplane-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.22.1
     created: "2021-09-15T06:32:21.491558446Z"
     description: A Helm chart for a Virtual Kubernetes controlplane
     digest: b7fd411e15e7dea9534a4102358a71c53ab85a666dccaed66670c3651e0076ed
@@ -168,4 +183,4 @@ entries:
     urls:
     - https://github.com/onmetal/virtual-controlplane/releases/download/virtual-controlplane-0.1.0/virtual-controlplane-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-15T14:18:22.502590934Z"
+generated: "2021-09-15T14:30:22.379460911Z"
