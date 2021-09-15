@@ -13,7 +13,7 @@ In order to do it, we will need certain things such as:
 - `etcd` server (ideally with a [backup and restore sidecar](https://github.com/gardener/etcd-backup-restore)[^1])
 - `kube-api-server` and `kube-controller-manager`
 
-Since this Kubernetes API server setup does not have any nodes, we don't need to deploy the `kube-scheduler` as we won't be deploying any `Pods`.
+Since this Kubernetes API server setup does not have any nodes, there is no need in `kube-scheduler` as we won't deploy any `Pods`.
 
 Those components can be easily deployed on an existing Kubernetes cluster[^2].
 
