@@ -14,7 +14,7 @@ Required components to deploy the virtual control plane are depicted in the diag
 
 ![virtual control plane detailed](../assets/vc-detailed.png)
 
-The utility controller in this setup are needed for the following tasks:
+The utility controller in this setup is needed for the following tasks:
 
 * `cert-manager`: Manages cluster wide CAs and certificates for the `kube-apiserver` and `etcd`
 * `template-operator`: Generates in-cluster `kubeconfigs` from the genereated TLS certificates
