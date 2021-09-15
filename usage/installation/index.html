@@ -16,7 +16,7 @@
     
     
       
-        <title>Installation - Virtual Controlplane</title>
+        <title>Installation - Virtual Control Plane</title>
       
     
     
@@ -78,7 +78,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Virtual Controlplane" class="md-header__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="../.." title="Virtual Control Plane" class="md-header__button md-logo" aria-label="Virtual Control Plane" data-md-component="logo">
       
   <img src="../../assets/logo.png" alt="logo">
 
@@ -90,7 +90,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Virtual Controlplane
+            Virtual Control Plane
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -196,12 +196,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Virtual Controlplane" class="md-nav__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="../.." title="Virtual Control Plane" class="md-nav__button md-logo" aria-label="Virtual Control Plane" data-md-component="logo">
       
   <img src="../../assets/logo.png" alt="logo">
 
     </a>
-    Virtual Controlplane
+    Virtual Control Plane
   </label>
   
     <div class="md-nav__source">
@@ -311,6 +311,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#installation_1" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-api-server" class="md-nav__link">
+    Access API Server
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -385,7 +399,19 @@
   
     <li class="md-nav__item">
       <a href="../vc/" class="md-nav__link">
-        Virtual Controlplane
+        Virtual Control Plane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/" class="md-nav__link">
+        Access API Server
       </a>
     </li>
   
@@ -466,6 +492,48 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Presentations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Presentations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Presentations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/presentation/d/1oNQMpDpjKyF27EzypQf806ygLtQgDWnitycJ_zTHs0w/edit?usp=sharing" class="md-nav__link">
+        Virtual Control Plane
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -505,6 +573,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#installation_1" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-api-server" class="md-nav__link">
+    Access API Server
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -523,8 +605,34 @@
                 
                 
                 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
+<p>This section describes all installation steps for <code>virtual-controlplane</code> into a Kubernetes cluster.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>helm</li>
+<li>kubectl</li>
+<li>Access to a Kubernetes cluster (<a href="https://minikube.sigs.k8s.io/docs/">minikube</a>, <a href="https://kind.sigs.k8s.io/">kind</a> or a real one)</li>
+</ul>
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
+<p>Required components to deploy the virtual control plane are depicted in the diagram below:</p>
+<p><img alt="virtual control plane detailed" src="../../assets/vc-detailed.png" /></p>
+<p>The utility controller in this setup is needed for the following tasks:</p>
+<ul>
+<li><code>cert-manager</code>: Manages cluster wide CAs and certificates for the <code>kube-apiserver</code> and <code>etcd</code></li>
+<li><code>template-operator</code>: Generates in-cluster <code>kubeconfigs</code> from the genereated TLS certificates</li>
+<li><code>druid</code>: Deploys and manages the lifecycle of <code>etcd</code> clusters</li>
+</ul>
+<h2 id="installation_1">Installation<a class="headerlink" href="#installation_1" title="Permanent link">&para;</a></h2>
+<p>To install all the components mentioned above please follow the guides in the following order:</p>
+<ul>
+<li><a href="/virtual-controlplane/usage/helm">Configure Helm repository</a></li>
+<li><a href="/virtual-controlplane/usage/cert-manager">Install Cert-Manager</a></li>
+<li><a href="/virtual-controlplane/usage/druid">Install Druid</a></li>
+<li><a href="/virtual-controlplane/usage/etcd">Install Etcd</a></li>
+<li><a href="/virtual-controlplane/usage/template-operator">Install Template Operator</a></li>
+<li><a href="/virtual-controlplane/usage/virtual-control-plane">Install Virtual Control Plane Components</a></li>
+</ul>
+<h2 id="access-api-server">Access API Server<a class="headerlink" href="#access-api-server" title="Permanent link">&para;</a></h2>
+<p>Please follow the <a href="/virtual-controlplane/usage/access">Access API Server</a> to access the virtual Kubernetes API server we just deployed.</p>
                 
               
               

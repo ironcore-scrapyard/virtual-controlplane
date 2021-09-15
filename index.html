@@ -16,7 +16,7 @@
     
     
       
-        <title>Virtual Controlplane</title>
+        <title>Virtual Control Plane</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#virtual-controlplane" class="md-skip">
+        <a href="#virtual-control-plane" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +78,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Virtual Controlplane" class="md-header__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="." title="Virtual Control Plane" class="md-header__button md-logo" aria-label="Virtual Control Plane" data-md-component="logo">
       
   <img src="assets/logo.png" alt="logo">
 
@@ -90,7 +90,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Virtual Controlplane
+            Virtual Control Plane
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -196,12 +196,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Virtual Controlplane" class="md-nav__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="." title="Virtual Control Plane" class="md-nav__button md-logo" aria-label="Virtual Control Plane" data-md-component="logo">
       
   <img src="assets/logo.png" alt="logo">
 
     </a>
-    Virtual Controlplane
+    Virtual Control Plane
   </label>
   
     <div class="md-nav__source">
@@ -383,7 +383,19 @@
   
     <li class="md-nav__item">
       <a href="usage/vc/" class="md-nav__link">
-        Virtual Controlplane
+        Virtual Control Plane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usage/access/" class="md-nav__link">
+        Access API Server
       </a>
     </li>
   
@@ -464,6 +476,48 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Presentations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Presentations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Presentations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/presentation/d/1oNQMpDpjKyF27EzypQf806ygLtQgDWnitycJ_zTHs0w/edit?usp=sharing" class="md-nav__link">
+        Virtual Control Plane
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -520,22 +574,22 @@
                   </a>
                 
                 
-                <h1 id="virtual-controlplane">Virtual Controlplane<a class="headerlink" href="#virtual-controlplane" title="Permanent link">&para;</a></h1>
+                <h1 id="virtual-control-plane">Virtual Control Plane<a class="headerlink" href="#virtual-control-plane" title="Permanent link">&para;</a></h1>
 <p>The project contains a collection of helm charts to deploy a virtual/nodeless <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/">Kubernetes API server</a>.</p>
 <h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
 <p>Why do we need such a thing as a nodeless Kubernetes cluster?</p>
-<p>When developing a custom controlplane by <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/">extending Kubernetes</a> and using the <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator Pattern</a> we typically might not be interested in objects like <code>Pods</code>, <code>Deployments</code> and others. The goal instead is to introduce new <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/">CustomResourceDefinitions</a> on which our controllers will operate by leveraging the concepts the Kubernetes API machinery is offering us. </p>
+<p>When developing a custom control plane by <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/">extending Kubernetes</a> and using the <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Operator Pattern</a> we might be not really interested in objects such <code>Pods</code>, <code>Deployments</code> and others. The goal instead is to introduce new <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/">CustomResourceDefinitions</a> on which our controllers will operate by leveraging the concepts of Kubernetes API machinery.</p>
 <p>In order to do it, we will need certain things such as:</p>
 <ul>
 <li><code>etcd</code> server (ideally with a <a href="https://github.com/gardener/etcd-backup-restore">backup and restore sidecar</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>)</li>
-<li><code>kube-api-server</code> and <code>kube-controller-manager</code> </li>
+<li><code>kube-api-server</code> and <code>kube-controller-manager</code></li>
 </ul>
-<p>Since this Kubernetes API server setup does not have any nodes, we don't need to deploy the <code>kube-scheduler</code> as we won't be deploying any <code>Pods</code>.</p>
+<p>Since this Kubernetes API server setup does not have any nodes, there is no need in <code>kube-scheduler</code> as we won't deploy any <code>Pods</code>.</p>
 <p>Those components can be easily deployed on an existing Kubernetes cluster<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
-<p><img alt="virtual controlplane" src="assets/vc.png" /></p>
+<p><img alt="virtual control plane" src="assets/vc.png" /></p>
 <p>The figure above illustrates the core components which are deployed on a <em>vanilla</em> Kubernetes runtime cluster.</p>
-<p><img alt="virtual controlplane controller" src="assets/vc-controller.png" /></p>
-<p>Your custom controllers can now also be deployed on the same (or different) runtime cluster as illustrated in the image above.</p>
+<p><img alt="virtual control plane controller" src="assets/vc-controller.png" /></p>
+<p>Now  your custom controllers can be deployed on the same (or different) runtime cluster as illustrated in the image above.</p>
 <h2 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
 <p>The main advantage of this approach is, that controllers and the content inside of virtual Kubernetes API server are no longer physically bound to the underlying runtime cluster as your <abbr title="Custom Resource Definitions">CRDs</abbr> are not mixed with content of the runtime clusters API server.</p>
 <p>Since the virtual controlplane in our scenario is just another workload running in a Kubernetes cluster, it can be moved and restored to a different cluster in case disaster strikes and the runtime cluster becomes unavailable.</p>

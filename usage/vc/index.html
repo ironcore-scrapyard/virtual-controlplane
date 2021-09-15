@@ -16,7 +16,7 @@
     
     
       
-        <title>Virtual Controlplane - Virtual Controlplane</title>
+        <title>Virtual Control Plane - Virtual Control Plane</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#virtual-controlplane" class="md-skip">
+        <a href="#virtual-control-plane" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +78,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Virtual Controlplane" class="md-header__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="../.." title="Virtual Control Plane" class="md-header__button md-logo" aria-label="Virtual Control Plane" data-md-component="logo">
       
   <img src="../../assets/logo.png" alt="logo">
 
@@ -90,13 +90,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Virtual Controlplane
+            Virtual Control Plane
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Virtual Controlplane
+              Virtual Control Plane
             
           </span>
         </div>
@@ -196,12 +196,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Virtual Controlplane" class="md-nav__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="../.." title="Virtual Control Plane" class="md-nav__button md-logo" aria-label="Virtual Control Plane" data-md-component="logo">
       
   <img src="../../assets/logo.png" alt="logo">
 
     </a>
-    Virtual Controlplane
+    Virtual Control Plane
   </label>
   
     <div class="md-nav__source">
@@ -347,12 +347,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Virtual Controlplane
+          Virtual Control Plane
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Virtual Controlplane
+        Virtual Control Plane
       </a>
       
         
@@ -370,8 +370,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-api-server" class="md-nav__link">
+    Access API Server
   </a>
   
 </li>
@@ -394,6 +415,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/" class="md-nav__link">
+        Access API Server
+      </a>
     </li>
   
 
@@ -473,6 +506,48 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Presentations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Presentations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Presentations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/presentation/d/1oNQMpDpjKyF27EzypQf806ygLtQgDWnitycJ_zTHs0w/edit?usp=sharing" class="md-nav__link">
+        Virtual Control Plane
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -499,8 +574,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-api-server" class="md-nav__link">
+    Access API Server
   </a>
   
 </li>
@@ -536,10 +632,44 @@
                   </a>
                 
                 
-                <h1 id="virtual-controlplane">Virtual Controlplane<a class="headerlink" href="#virtual-controlplane" title="Permanent link">&para;</a></h1>
+                <h1 id="virtual-control-plane">Virtual Control Plane<a class="headerlink" href="#virtual-control-plane" title="Permanent link">&para;</a></h1>
+<p>The <code>virtual-controlplane</code> helm chart is installing the <code>kube-apiserver</code> and <code>kube-controller-manager</code> which are the core
+building blocks of our virtual Kubernetes cluster.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Nginx ingress controller is installed in your Kubernetes cluster</li>
+<li>DNS is configured for your external Ingress load balancer</li>
+</ul>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>Before we begin with the installation it is recommended to override some of the default <a href="https://github.com/onmetal/virtual-controlplane/blob/main/charts/virtual-controlplane/values.yaml">values</a>.</p>
+<p>To do that we need to create a <code>values.yaml</code> file containing the following entries:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiServer</span><span class="p">:</span>
+  <span class="nt">externalDNSName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;external ingress DNS name&gt;</span>
+  <span class="nt">tls</span><span class="p">:</span>
+    <span class="nt">staticToken</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">securePasswordToken</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note<p>The helm installation will run through without changing those values. This might be OK if you deploy it into a local Minikube or Kind cluster. However you won't be able to access your cluster since the <code>Ingress</code> won't be configured correctly. Note, that there is a huge security risk as the static token can be guessed relatively easy exposing your API server to fraudulent access.</p>
+</p>
+</div>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>The <code>virtual-controlplane</code> chart can be installed via:</p>
+<div class="highlight"><pre><span></span><code>helm install <span class="se">\</span>
+    vc vc/virtual-controlplane <span class="se">\</span>
+    --namespace onmetal <span class="se">\</span>
+    --create-namespace <span class="se">\</span>
+     -f VALUES_DIR/values.yaml
+</code></pre></div>
+<h2 id="access-api-server">Access API Server<a class="headerlink" href="#access-api-server" title="Permanent link">&para;</a></h2>
+<p>Please follow the <a href="/virtual-controlplane/usage/access">Access API Server</a> to access the virtual Kubernetes API server we just deployed.</p>
 <h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
+<p>To upgrade your <code>virtual-controlplane</code> deployment run:</p>
+<div class="highlight"><pre><span></span><code>helm -n onmetal upgrade vc vc/virtual-controlplane -f VALUES_DIR/values.yaml
+</code></pre></div>
 <h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
+<p>To remove the installation run:</p>
+<div class="highlight"><pre><span></span><code>helm -n onmetal delete vc
+</code></pre></div>
                 
               
               
@@ -575,13 +705,13 @@
       
       
         
-        <a href="../../development/documentation/" class="md-footer__link md-footer__link--next" aria-label="Next: Documentation" rel="next">
+        <a href="../access/" class="md-footer__link md-footer__link--next" aria-label="Next: Access API Server" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Documentation
+              Access API Server
             </div>
           </div>
           <div class="md-footer__button md-icon">

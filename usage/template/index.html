@@ -16,7 +16,7 @@
     
     
       
-        <title>Template Operator - Virtual Controlplane</title>
+        <title>Template Operator - Virtual Control Plane</title>
       
     
     
@@ -78,7 +78,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Virtual Controlplane" class="md-header__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="../.." title="Virtual Control Plane" class="md-header__button md-logo" aria-label="Virtual Control Plane" data-md-component="logo">
       
   <img src="../../assets/logo.png" alt="logo">
 
@@ -90,7 +90,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Virtual Controlplane
+            Virtual Control Plane
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -196,12 +196,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Virtual Controlplane" class="md-nav__button md-logo" aria-label="Virtual Controlplane" data-md-component="logo">
+    <a href="../.." title="Virtual Control Plane" class="md-nav__button md-logo" aria-label="Virtual Control Plane" data-md-component="logo">
       
   <img src="../../assets/logo.png" alt="logo">
 
     </a>
-    Virtual Controlplane
+    Virtual Control Plane
   </label>
   
     <div class="md-nav__source">
@@ -365,6 +365,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#upgrade" class="md-nav__link">
     Upgrade
   </a>
@@ -392,7 +399,19 @@
   
     <li class="md-nav__item">
       <a href="../vc/" class="md-nav__link">
-        Virtual Controlplane
+        Virtual Control Plane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/" class="md-nav__link">
+        Access API Server
       </a>
     </li>
   
@@ -473,6 +492,48 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Presentations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Presentations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Presentations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/presentation/d/1oNQMpDpjKyF27EzypQf806ygLtQgDWnitycJ_zTHs0w/edit?usp=sharing" class="md-nav__link">
+        Virtual Control Plane
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -501,6 +562,13 @@
         <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
 </li>
@@ -537,9 +605,42 @@
                 
                 
                 <h1 id="template-operator">Template Operator<a class="headerlink" href="#template-operator" title="Permanent link">&para;</a></h1>
+<p>The <a href="https://github.com/onmetal/template-operator">template-operator</a> is used to create derived objects from other Kubernetes objects.
+It is for example possible to create a <code>Secret</code> containing the <code>kubeconfig</code> from other <code>Secrets</code> or <code>ConfigMaps</code> which contains the TLS
+certificates and other information needed to generate a <code>kubeconfig</code>.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>Add the <code>template-operator</code> helm chart repository:</p>
+<div class="highlight"><pre><span></span><code>helm repo add template-operator https://onmetal.github.io/template-operator/
+helm repo update
+</code></pre></div>
+<p>The <code>template-operator</code> helm chart can be installed via:</p>
+<div class="highlight"><pre><span></span><code>helm install <span class="se">\</span>
+    template-operator template-operator/template-operator <span class="se">\</span>
+    --namespace template-operator <span class="se">\</span>
+    --create-namespace
+</code></pre></div>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The <code>template-operator</code> chart can be configured by overriding the <a href="https://github.com/onmetal/template-operator/blob/main/charts/template-operator/values.yaml">default values</a>.</p>
+<p>The RBAC rules are important configuration point, as we need to specify which objects the <code>template-operator</code> is allowed to watch and modify.</p>
+<p>Here is an example, as defined in the default <code>values.yaml</code>, to allow to watch and modify <code>Secrets</code> and <code>ConfigMaps</code> in your cluster.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">rbac</span><span class="p">:</span>
+  <span class="nt">adminGroupResouces</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">groups</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;&quot;</span>
+      <span class="nt">resources</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">secrets</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">configmaps</span>
+</code></pre></div>
 <h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
+<p>To upgrade your <code>template-operator</code> deployment run:</p>
+<div class="highlight"><pre><span></span><code>helm -n template-operator upgrade template-operator <span class="se">\</span>
+    template-operator/template-operator <span class="se">\</span>
+    -f VALUES_DIR/template-operator-values.yaml
+</code></pre></div>
 <h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
+<p>To uninstall the <code>template-operator</code> from your cluster run:</p>
+<div class="highlight"><pre><span></span><code>helm -n template-operator delete template-operator
+</code></pre></div>
                 
               
               
@@ -575,13 +676,13 @@
       
       
         
-        <a href="../vc/" class="md-footer__link md-footer__link--next" aria-label="Next: Virtual Controlplane" rel="next">
+        <a href="../vc/" class="md-footer__link md-footer__link--next" aria-label="Next: Virtual Control Plane" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Virtual Controlplane
+              Virtual Control Plane
             </div>
           </div>
           <div class="md-footer__button md-icon">

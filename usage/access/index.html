@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://onmetal.github.io/virtual-controlplane/usage/druid/">
+        <link rel="canonical" href="https://onmetal.github.io/virtual-controlplane/usage/access/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
-        <title>Druid - Virtual Control Plane</title>
+        <title>Access API Server - Virtual Control Plane</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#etcd-druid" class="md-skip">
+        <a href="#access-the-virtual-control-plane-api-server" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Druid
+              Access API Server
             
           </span>
         </div>
@@ -299,65 +299,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Druid
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../druid/" class="md-nav__link">
         Druid
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade" class="md-nav__link">
-    Upgrade
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remove" class="md-nav__link">
-    Remove
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -401,11 +347,58 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../access/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Access API Server
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Access API Server
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#get-initial-admin-kubeconfig" class="md-nav__link">
+    Get initial admin kubeconfig
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-cluster" class="md-nav__link">
+    Accessing the cluster
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -553,22 +546,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
+  <a href="#get-initial-admin-kubeconfig" class="md-nav__link">
+    Get initial admin kubeconfig
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#upgrade" class="md-nav__link">
-    Upgrade
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remove" class="md-nav__link">
-    Remove
+  <a href="#accessing-the-cluster" class="md-nav__link">
+    Accessing the cluster
   </a>
   
 </li>
@@ -585,31 +571,30 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/onmetal/virtual-controlplane/edit/main/docs/usage/druid.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/onmetal/virtual-controlplane/edit/main/docs/usage/access.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="etcd-druid">Etcd Druid<a class="headerlink" href="#etcd-druid" title="Permanent link">&para;</a></h1>
-<p>The <a href="https://github.com/gardener/etcd-druid">etcd-druid</a> is an operator which manages <a href="https://etcd.io/">etcd</a> deployments inside a Kubernetes cluster.</p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p><code>etcd-druid</code> can be installed via <code>helm install</code> into your Kubernetes cluster. Please make sure you have configured the <code>helm repo</code> as described <a href="/usage/helm">here</a>.</p>
-<div class="highlight"><pre><span></span><code>helm -n onmetal install druid vc/etcd-druid --create-namespace
-</code></pre></div>
-<p>If you want to overwrite the default <code>values.yaml</code> you can do so by providing a custom configuration.</p>
-<div class="highlight"><pre><span></span><code>helm -n onmetal install druid vc/etcd-druid -f VALUES_DIR/druid-values.yaml
+                <h1 id="access-the-virtual-control-plane-api-server">Access the Virtual Control Plane API Server<a class="headerlink" href="#access-the-virtual-control-plane-api-server" title="Permanent link">&para;</a></h1>
+<p>The <code>template-operator</code> is generating a secret containing the initial <code>kubeconfig</code> with
+<code>admin</code> privileges. It is located in the namespace of your <a href="/virtual-controlplane/usage/virtual-control-plane">virtual-controlplane</a> installation.</p>
+<h2 id="get-initial-admin-kubeconfig">Get initial admin kubeconfig<a class="headerlink" href="#get-initial-admin-kubeconfig" title="Permanent link">&para;</a></h2>
+<p>The <code>kubeconfig</code> can be read from the cluster by running the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl -n onmetal get secret kubeconfig-for-admin <span class="se">\</span>
+    -o <span class="nv">jsonpath</span><span class="o">={</span>.data.kubeconfig<span class="o">}</span> <span class="p">|</span> base64 -d &gt; kubeconfig
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Please refer to the chart <a href="https://github.com/onmetal/virtual-controlplane/tree/main/charts/druid">readme</a> for detailed information on the value parameters.</p>
+<p class="admonition-title">Note<p><code>base64</code> cli is needed to decrypt the base64 encoded secret values.</p>
+</p>
 </div>
-<h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
-<p>To upgrade your <code>etcd-druid</code> deployment run:</p>
-<div class="highlight"><pre><span></span><code>helm -n onmetal upgrade druid vc/etcd-druid -f VALUES_DIR/druid-values.yaml
+<p>Here we assume, that <code>onmetal</code> is our namespace where we installed the virtual control plane components into.</p>
+<h2 id="accessing-the-cluster">Accessing the cluster<a class="headerlink" href="#accessing-the-cluster" title="Permanent link">&para;</a></h2>
+<p>The last thing we need to do is to set the <code>KUBECONFIG</code> environment variable to point to our newly created <code>kubeconfig</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>kubeconfig
 </code></pre></div>
-<h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
-<p>To remove the installation run:</p>
-<div class="highlight"><pre><span></span><code>helm -n onmetal delete druid
+<p>If everything worked out, we should now be able to access the cluster via:</p>
+<div class="highlight"><pre><span></span><code>kubectl get namespaces
 </code></pre></div>
                 
               
@@ -630,7 +615,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../cert-manager/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cert Manager" rel="prev">
+        <a href="../vc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Virtual Control Plane" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -639,20 +624,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Cert Manager
+              Virtual Control Plane
             </div>
           </div>
         </a>
       
       
         
-        <a href="../etcd/" class="md-footer__link md-footer__link--next" aria-label="Next: Etcd" rel="next">
+        <a href="../../development/documentation/" class="md-footer__link md-footer__link--next" aria-label="Next: Documentation" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Etcd
+              Documentation
             </div>
           </div>
           <div class="md-footer__button md-icon">
