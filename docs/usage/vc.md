@@ -12,7 +12,7 @@ building blocks of our virtual Kubernetes cluster.
 
 Before we begin with the installation it is recommended to override some of the default [values](https://github.com/onmetal/virtual-controlplane/blob/main/charts/virtual-controlplane/values.yaml).
 
-For tha we need to create a `values.yaml` file containing the following entries.
+To do that we need to create a `values.yaml` file containing the following entries:
 
 ```yaml
 apiServer:
