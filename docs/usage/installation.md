@@ -10,7 +10,7 @@ This section describes all installation steps for `virtual-controlplane` into a 
 
 ## Components
 
-The components necessary to deploy the virtual control plane are depicted in the diagram below:
+Required components to deploy the virtual control plane are depicted in the diagram below:
 
 ![virtual control plane detailed](../assets/vc-detailed.png)
 
