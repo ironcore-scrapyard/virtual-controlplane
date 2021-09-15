@@ -32,7 +32,7 @@ replicas: 1
 # priorityClassName: foo
 
 # -- etcd pvc storage class
-storageClass: standard
+storageClass: default
 # -- etcd disk size
 storageCapacity: 1Gi
 
