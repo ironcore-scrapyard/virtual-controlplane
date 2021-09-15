@@ -3,6 +3,21 @@ entries:
   etcd:
   - apiVersion: v2
     appVersion: 3.4.13
+    created: "2021-09-15T14:18:22.502462032Z"
+    description: Helm chart for deploying etcd through etcd druid.
+    digest: f2bb6e9b179cc3588e8079812ca23ef44c54dd24fd4435f47a77cf969668f853
+    home: https://github.com/onmetal/virtual-controlplane/
+    maintainers:
+    - name: afritzler
+    name: etcd
+    sources:
+    - https://github.com/onmetal/virtual-controlplane/charts/etcd
+    type: application
+    urls:
+    - https://github.com/onmetal/virtual-controlplane/releases/download/etcd-0.1.2/etcd-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 3.4.13
     created: "2021-09-11T18:57:16.151215366Z"
     description: Helm chart for deploying etcd through etcd druid.
     digest: 4a883256b3af36a293846c4fa6e7e2f64548158dfccf725bd3e5d466505376bf
@@ -153,4 +168,4 @@ entries:
     urls:
     - https://github.com/onmetal/virtual-controlplane/releases/download/virtual-controlplane-0.1.0/virtual-controlplane-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-15T06:32:21.491601146Z"
+generated: "2021-09-15T14:18:22.502590934Z"
