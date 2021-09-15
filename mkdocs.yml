@@ -38,11 +38,13 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Usage:
-    - Overview: usage/overview.md
+    - Installation: usage/installation.md
     - Helm Repository: usage/helm.md
     - Cert Manager: usage/cert-manager.md
     - Druid: usage/druid.md
     - Etcd: usage/etcd.md
+    - Template Operator: usage/template.md
+    - Virtual Controlplane: usage/vc.md
   - Developer Guide:
       - Documentation: development/documentation.md
       - Contribution Guide: development/contribution.md
