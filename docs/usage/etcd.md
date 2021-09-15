@@ -34,3 +34,5 @@ To remove the installation run:
 ```shell
 helm -n onmetal delete etcd
 ```
+
+--8<-- "hack/docs/abbreviations.md"
