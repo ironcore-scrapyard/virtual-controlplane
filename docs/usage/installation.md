@@ -1,6 +1,6 @@
 # Installation
 
-This section describes end-to-end how to install the `virtual-controlplane` into a Kubernetes cluster.
+This section describes all installation steps for `virtual-controlplane` into a Kubernetes cluster.
 
 ## Prerequisites
 
