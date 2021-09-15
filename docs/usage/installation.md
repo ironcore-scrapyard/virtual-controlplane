@@ -18,7 +18,7 @@ The utility controller in this setup is needed for the following tasks:
 
 * `cert-manager`: Manages cluster wide CAs and certificates for the `kube-apiserver` and `etcd`
 * `template-operator`: Generates in-cluster `kubeconfigs` from the genereated TLS certificates
-* `druid`: Operator to deploy and manage the lifecycle of `etcd` clusters
+* `druid`: Deploys and manages the lifecycle of `etcd` clusters
 
 ## Installation
 

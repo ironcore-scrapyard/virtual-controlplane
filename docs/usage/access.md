@@ -19,7 +19,7 @@ Here we assume, that `onmetal` is our namespace where we installed the virtual c
 
 ## Accessing the cluster
 
-The last thing we need to do is to set the `KUBECONFIG` environment variable to point ot our newly created `kubeconfig` file:
+The last thing we need to do is to set the `KUBECONFIG` environment variable to point to our newly created `kubeconfig` file:
 
 ```bash
 export KUBECONFIG=kubeconfig
