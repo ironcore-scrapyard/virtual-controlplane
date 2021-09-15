@@ -26,8 +26,7 @@ helm install \
 
 The `template-operator` chart can be configured by overriding the [default values](https://github.com/onmetal/template-operator/blob/main/charts/template-operator/values.yaml).
 
-One important configuration point are the RBAC rules, where we need to specify which objects the `template-operator` is allowed
-to watch and modify.
+The RBAC rules are important configuration point, as we need to specify which objects the `template-operator` is allowed to watch and modify.
 
 Here is an example, as defined in the default `values.yaml`, to allow to watch and modify `Secrets` and `ConfigMaps` in your cluster.
 
