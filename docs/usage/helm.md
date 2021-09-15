@@ -26,3 +26,5 @@ vc/etcd                              	0.1.1        	3.4.13     	Helm chart for d
 vc/etcd-druid                        	0.1.2        	0.6.0      	Helm chart for etcd-druid.
 vc/virtual-controlplane              	0.1.2        	1.22.1     	A Helm chart for a Virtual Kubernetes controlplane
 ```
+
+--8<-- "hack/docs/abbreviations.md"

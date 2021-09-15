@@ -7,7 +7,7 @@ The [etcd-druid](https://github.com/gardener/etcd-druid) is an operator which ma
 `etcd-druid` can be installed via `helm install` into your Kubernetes cluster. Please make sure you have configured the `helm repo` as described [here](/usage/helm).
 
 ```shell
-helm -n onmetal install druid vc/etcd-druid
+helm -n onmetal install druid vc/etcd-druid --create-namespace
 ```
 
 If you want to overwrite the default `values.yaml` you can do so by providing a custom configuration.
@@ -34,3 +34,5 @@ To remove the installation run:
 ```shell
 helm -n onmetal delete druid
 ```
+
+--8<-- "hack/docs/abbreviations.md"

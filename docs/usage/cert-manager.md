@@ -37,3 +37,5 @@ To uninstall the `cert-manager` from your cluster run:
 ```shell
 helm -n cert-manager delete cert-manager
 ```
+
+--8<-- "hack/docs/abbreviations.md"

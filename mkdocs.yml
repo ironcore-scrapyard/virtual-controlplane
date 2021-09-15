@@ -1,4 +1,4 @@
-site_name: Virtual Controlplane
+site_name: Virtual Control Plane
 repo_url: https://github.com/onmetal/virtual-controlplane/
 site_url: https://onmetal.github.io/virtual-controlplane/
 edit_uri: edit/main/docs/
@@ -44,8 +44,11 @@ nav:
     - Druid: usage/druid.md
     - Etcd: usage/etcd.md
     - Template Operator: usage/template.md
-    - Virtual Controlplane: usage/vc.md
+    - Virtual Control Plane: usage/vc.md
+    - Access API Server: usage/access.md
   - Developer Guide:
       - Documentation: development/documentation.md
       - Contribution Guide: development/contribution.md
   - OnMetal Documentation ⧉: https://onmetal.github.io/documentation/
+  - Presentations:
+    - Virtual Control Plane: https://docs.google.com/presentation/d/1oNQMpDpjKyF27EzypQf806ygLtQgDWnitycJ_zTHs0w/edit?usp=sharing

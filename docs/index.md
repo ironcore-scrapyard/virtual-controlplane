@@ -1,4 +1,4 @@
-# Virtual Controlplane
+# Virtual Control Plane
 
 The project contains a collection of helm charts to deploy a virtual/nodeless [Kubernetes API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
 
@@ -6,24 +6,24 @@ The project contains a collection of helm charts to deploy a virtual/nodeless [K
 
 Why do we need such a thing as a nodeless Kubernetes cluster?
 
-When developing a custom controlplane by [extending Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/) and using the [Operator Pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) we typically might not be interested in objects like `Pods`, `Deployments` and others. The goal instead is to introduce new [CustomResourceDefinitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) on which our controllers will operate by leveraging the concepts the Kubernetes API machinery is offering us. 
+When developing a custom control plane by [extending Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/) and using the [Operator Pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) we might be not really interested in objects such `Pods`, `Deployments` and others. The goal instead is to introduce new [CustomResourceDefinitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) on which our controllers will operate by leveraging the concepts of Kubernetes API machinery.
 
 In order to do it, we will need certain things such as:
 
 - `etcd` server (ideally with a [backup and restore sidecar](https://github.com/gardener/etcd-backup-restore)[^1])
-- `kube-api-server` and `kube-controller-manager` 
+- `kube-api-server` and `kube-controller-manager`
 
-Since this Kubernetes API server setup does not have any nodes, we don't need to deploy the `kube-scheduler` as we won't be deploying any `Pods`.
+Since this Kubernetes API server setup does not have any nodes, there is no need in `kube-scheduler` as we won't deploy any `Pods`.
 
 Those components can be easily deployed on an existing Kubernetes cluster[^2].
 
-![virtual controlplane](assets/vc.png)
+![virtual control plane](assets/vc.png)
 
 The figure above illustrates the core components which are deployed on a _vanilla_ Kubernetes runtime cluster.
 
-![virtual controlplane controller](assets/vc-controller.png)
+![virtual control plane controller](assets/vc-controller.png)
 
-Your custom controllers can now also be deployed on the same (or different) runtime cluster as illustrated in the image above.
+Now  your custom controllers can be deployed on the same (or different) runtime cluster as illustrated in the image above.
 
 ## Advantages
 
