@@ -23,7 +23,7 @@ The figure above illustrates the core components which are deployed on a _vanill
 
 ![virtual control plane controller](assets/vc-controller.png)
 
-Your custom controllers can now also be deployed on the same (or different) runtime cluster as illustrated in the image above.
+Now  your custom controllers can be deployed on the same (or different) runtime cluster as illustrated in the image above.
 
 ## Advantages
 
