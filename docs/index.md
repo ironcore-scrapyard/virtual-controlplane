@@ -6,7 +6,7 @@ The project contains a collection of helm charts to deploy a virtual/nodeless [K
 
 Why do we need such a thing as a nodeless Kubernetes cluster?
 
-When developing a custom control plane by [extending Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/) and using the [Operator Pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) we typically might not be interested in objects like `Pods`, `Deployments` and others. The goal instead is to introduce new [CustomResourceDefinitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) on which our controllers will operate by leveraging the concepts the Kubernetes API machinery is offering us.
+When developing a custom control plane by [extending Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/) and using the [Operator Pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) we might be not really interested in objects such `Pods`, `Deployments` and others. The goal instead is to introduce new [CustomResourceDefinitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) on which our controllers will operate by leveraging the concepts of Kubernetes API machinery.
 
 In order to do it, we will need certain things such as:
 
