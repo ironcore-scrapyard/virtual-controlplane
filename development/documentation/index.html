@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#documentation-setup" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -258,8 +263,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/overview/" class="md-nav__link">
-        Overview
+      <a href="../../usage/installation/" class="md-nav__link">
+        Installation
       </a>
     </li>
   
@@ -313,6 +318,30 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/template/" class="md-nav__link">
+        Template Operator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/vc/" class="md-nav__link">
+        Virtual Controlplane
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -356,10 +385,69 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Documentation
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-development-setup" class="md-nav__link">
+    Local Development Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-content" class="md-nav__link">
+    Writing Content
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abbreviations" class="md-nav__link">
+    Abbreviations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -405,6 +493,65 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-development-setup" class="md-nav__link">
+    Local Development Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-content" class="md-nav__link">
+    Writing Content
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abbreviations" class="md-nav__link">
+    Abbreviations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -415,9 +562,40 @@
                   </a>
                 
                 
-                  <h1>Documentation</h1>
-                
-                
+                <h1 id="documentation-setup">Documentation Setup<a class="headerlink" href="#documentation-setup" title="Permanent link">&para;</a></h1>
+<p>The documentation of the <a href="https://github.com/onmetal/virtual-controlplane">virtual-controlplane</a> project is written primarily using Markdown.
+All documentation related content can be found in the <code>/docs</code> folder. New content also should be added there.
+<a href="https://www.mkdocs.org/">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">MkDocs Material</a> are then used to render the contents of the <code>/docs</code> folder to have a more user-friendly experience when browsing the projects' documentation.</p>
+<h2 id="requirements">Requirements:<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<p>Following tools are required to work on that package.</p>
+<ul>
+<li>Kubernetes cluster access to deploy and test the result (via minikube, kind or docker desktop locally)</li>
+<li><a href="https://www.gnu.org/software/make/">make</a> - to execute build goals</li>
+<li><a href="https://www.docker.com">docker</a> - to run the local mkdocs environment</li>
+<li><a href="https://git-scm.com/downloads">git</a> - to be able to commit any changes to repository</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don't have Docker installed on your machine please follow one of those guides:</p>
+<ul>
+<li><a href="https://docs.docker.com/desktop/mac/install/">Docker Desktop for Mac</a></li>
+<li><a href="https://docs.docker.com/desktop/windows/install/">Docker Desktop for Windows</a></li>
+<li><a href="https://docs.docker.com/engine/install/#server">Docker Engine for Linux</a></li>
+</ul>
+</div>
+<h2 id="local-development-setup">Local Development Setup<a class="headerlink" href="#local-development-setup" title="Permanent link">&para;</a></h2>
+<p>This project contains a local Docker based runtime environment for the documentation part. If you have an access to the docker registry and k8s installation that you can use for development purposes, just run following command and access the output in your browser under <a href="http://localhost:8000/">http://localhost:8000/</a>:</p>
+<p><div class="highlight"><pre><span></span><code>make start-docs
+</code></pre></div>
+The environment will hot-rebuild your documentation, so there is no need to restart it while you make your changes.
+If you want to add a new chapter (basically a new file/folder to <code>docs</code> directory) you should add it to the <code>nav</code> section in the <code>mkdocs.yml</code> file in the projects root folder.
+Use helper Makefile directive to clean up old and stopped container instances.</p>
+<div class="highlight"><pre><span></span><code>make clean-docs
+</code></pre></div>
+<h2 id="writing-content">Writing Content<a class="headerlink" href="#writing-content" title="Permanent link">&para;</a></h2>
+<h3 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Permanent link">&para;</a></h3>
+<p>Abbreviations are defined centrally in the following file <code>/hack/docs/abbreviations.md</code>. In case you introduce any new abbreviation to your content, please make sure to add a corresponding entry there.
+Please include the statement <code>--8&lt;-- "hack/docs/abbreviations.md"</code> at the end of each Markdown file. This will ensure that the abbreviation highlighting will work correctly.</p>
                 
               
               
@@ -437,7 +615,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../usage/etcd/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Etcd" rel="prev">
+        <a href="../../usage/vc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Virtual Controlplane" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -446,7 +624,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Etcd
+              Virtual Controlplane
             </div>
           </div>
         </a>

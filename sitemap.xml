@@ -2,52 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://onmetal.github.io/virtual-controlplane/</loc>
-         <lastmod>2021-09-11</lastmod>
+         <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://onmetal.github.io/virtual-controlplane/development/contribution/</loc>
-         <lastmod>2021-09-11</lastmod>
+         <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://onmetal.github.io/virtual-controlplane/development/documentation/</loc>
-         <lastmod>2021-09-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://onmetal.github.io/virtual-controlplane/development/setup/</loc>
-         <lastmod>2021-09-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://onmetal.github.io/virtual-controlplane/development/testing/</loc>
-         <lastmod>2021-09-11</lastmod>
+         <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://onmetal.github.io/virtual-controlplane/usage/cert-manager/</loc>
-         <lastmod>2021-09-11</lastmod>
+         <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://onmetal.github.io/virtual-controlplane/usage/druid/</loc>
-         <lastmod>2021-09-11</lastmod>
+         <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://onmetal.github.io/virtual-controlplane/usage/etcd/</loc>
-         <lastmod>2021-09-11</lastmod>
+         <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://onmetal.github.io/virtual-controlplane/usage/helm/</loc>
-         <lastmod>2021-09-11</lastmod>
+         <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://onmetal.github.io/virtual-controlplane/usage/overview/</loc>
-         <lastmod>2021-09-11</lastmod>
+         <loc>https://onmetal.github.io/virtual-controlplane/usage/installation/</loc>
+         <lastmod>2021-09-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://onmetal.github.io/virtual-controlplane/usage/template/</loc>
+         <lastmod>2021-09-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://onmetal.github.io/virtual-controlplane/usage/vc/</loc>
+         <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

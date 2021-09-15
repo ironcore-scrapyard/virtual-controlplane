@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#contributors-guide" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -258,8 +263,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/overview/" class="md-nav__link">
-        Overview
+      <a href="../../usage/installation/" class="md-nav__link">
+        Installation
       </a>
     </li>
   
@@ -308,6 +313,30 @@
     <li class="md-nav__item">
       <a href="../../usage/etcd/" class="md-nav__link">
         Etcd
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/template/" class="md-nav__link">
+        Template Operator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/vc/" class="md-nav__link">
+        Virtual Controlplane
       </a>
     </li>
   
@@ -368,10 +397,84 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Contribution Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Contribution Guide
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    Contributing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-contribute" class="md-nav__link">
+    Steps to Contribute
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-code" class="md-nav__link">
+    Contributing Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-documentation" class="md-nav__link">
+    Contributing Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-certificate-of-origin" class="md-nav__link">
+    Developer Certificate of Origin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-checklist" class="md-nav__link">
+    Pull Request Checklist
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues-and-planning" class="md-nav__link">
+    Issues and Planning
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -405,6 +508,80 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    Contributing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-contribute" class="md-nav__link">
+    Steps to Contribute
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-code" class="md-nav__link">
+    Contributing Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-documentation" class="md-nav__link">
+    Contributing Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-certificate-of-origin" class="md-nav__link">
+    Developer Certificate of Origin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-checklist" class="md-nav__link">
+    Pull Request Checklist
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues-and-planning" class="md-nav__link">
+    Issues and Planning
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -415,9 +592,121 @@
                   </a>
                 
                 
-                  <h1>Contribution Guide</h1>
-                
-                
+                <h1 id="contributors-guide">Contributors Guide<a class="headerlink" href="#contributors-guide" title="Permanent link">&para;</a></h1>
+<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<p>The Gardener on Metal project uses Github to manage reviews of pull requests.</p>
+<ul>
+<li>
+<p>If you are looking to make your first contribution, follow <a href="#steps-to-contribute">Steps to Contribute</a></p>
+</li>
+<li>
+<p>If you have a trivial fix or improvement, go ahead and create a pull request and
+address (with @...) a suitable maintainer of this repository
+(see <a href="https://raw.githubusercontent.com/onmetal/virtual-controlplane/main/CODEOWNERS">CODEOWNERS</a>
+of this repository) in the description of the pull request.</p>
+</li>
+<li>
+<p>If you plan to do something more involved, first discuss your ideas by creating an
+<a href="https://github.com/onmetal/virtual-controlplane/issues">issue</a> for this repository. This will avoid unnecessary work and surely give you
+and us a good deal of inspiration.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please follow these style guidelines to have your contribution considered by the maintainers:
+Coding style guidelines <a href="https://github.com/golang/go/wiki/CodeReviewComments">Go Code Review Comments</a>,
+Formatting and style section of Peter Bourgon’s <a href="http://peter.bourgon.org/go-in-production/#formatting-and-style">Go: Best Practices for Production Environments</a>.</p>
+</div>
+<h2 id="steps-to-contribute">Steps to Contribute<a class="headerlink" href="#steps-to-contribute" title="Permanent link">&para;</a></h2>
+<p>Do you want to work on an issue?  You are welcome to claim an existing one by commenting on it in GitHub.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Perform a cursory search to see if the issue has already been taken by someone else.
+This will prevent misunderstanding and duplication of  effort from contributors on the same issue.</p>
+</div>
+<p>If you have questions about one of the issues please comment on them and one of the
+maintainers will clarify it.</p>
+<p>We kindly ask you to follow the <a href="#pull-request-checklist">Pull Request Checklist</a> to ensure reviews can happen accordingly.</p>
+<h2 id="contributing-code">Contributing Code<a class="headerlink" href="#contributing-code" title="Permanent link">&para;</a></h2>
+<p>You are welcome to contribute code to the Gardener on Metal project in order to fix a bug or to implement a new feature.</p>
+<p>The following rules govern code contributions:</p>
+<ul>
+<li>Contributions must be licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></li>
+<li>You need to sign the <a href="#developer-certificate-of-origin">Developer Certificate of Origin</a>.</li>
+</ul>
+<h2 id="contributing-documentation">Contributing Documentation<a class="headerlink" href="#contributing-documentation" title="Permanent link">&para;</a></h2>
+<p>You are welcome to contribute documentation to the Gardener on Metal project.</p>
+<p>The following rules govern documentation contributions:</p>
+<ul>
+<li>Contributions must be licensed under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons Attribution 4.0 International License</a></li>
+<li>You need to sign the <a href="#developer-certificate-of-origin">Developer Certificate of Origin</a>.</li>
+</ul>
+<h2 id="developer-certificate-of-origin">Developer Certificate of Origin<a class="headerlink" href="#developer-certificate-of-origin" title="Permanent link">&para;</a></h2>
+<p>Due to legal reasons, contributors will be asked to accept a Developer Certificate of Origin (<abbr title="Developer Certificate of Origin">DCO</abbr>) before they submit
+the first pull request to the Gardener on Metal project, this happens in an automated fashion during the submission
+process. We use <a href="https://developercertificate.org/">the standard <abbr title="Developer Certificate of Origin">DCO</abbr> text of the Linux Foundation</a>.</p>
+<h2 id="pull-request-checklist">Pull Request Checklist<a class="headerlink" href="#pull-request-checklist" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fork and clone the repository to you local machine.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>git clone git@github.com:YOUR_GITHUB_USER/virtual-controlplane.git
+<span class="nb">cd</span> virtual-controlplane
+</code></pre></div>
+<ul>
+<li>Create a branch from the <code>main</code>  using 'git checkout' command.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If needed, rebase to the current <code>main</code> branch before submitting  your pull request. If it doesn't merge properly
+with <code>main</code> you may be asked to rebase your changes.</p>
+<div class="highlight"><pre><span></span><code>git checkout -b my_feature
+<span class="c1"># rebase if necessary</span>
+git fetch upstream main
+git rebase upstream/main
+</code></pre></div>
+</div>
+<ul>
+<li>
+<p>Commits should be as small as possible, while ensuring that each commit is correct independently
+(i.e. each commit should compile and pass tests).</p>
+</li>
+<li>
+<p>Create your patch and test your changes  before you commit them. Automated test by unit / integration tests are preferred.
+If tested manually, provide information about the test scope in the <abbr title="Pull Request">PR</abbr> description. Now you can commit
+your changes to your feature branch and push it to your fork.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>git add .
+git commit -m <span class="s2">&quot;Something meaningful&quot;</span>
+git push origin my_feature
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alternatively you can amend your commit before pushing if you forgot something by using <code>git commit --amend</code></p>
+</div>
+<ul>
+<li>
+<p>Create <em>Work In Progress [WIP]</em> pull requests only if you need a clarification or an explicit review before you can
+continue your work item.</p>
+</li>
+<li>
+<p>If your patch is not getting reviewed, or you need a specific person to review it, you can @-reply a reviewer asking
+for a review in the pull request or a comment.</p>
+</li>
+<li>
+<p>Post review:</p>
+<ul>
+<li>If a reviewer requires you to change your commit(s), please test the changes again.</li>
+<li>Amend the affected commit(s) and force push onto your branch.</li>
+<li>Set respective comments in your GitHub review as resolved.</li>
+<li>Create a general <abbr title="Pull Request">PR</abbr> comment to notify the reviewers that your amendments are ready for another round of review.</li>
+</ul>
+</li>
+</ul>
+<h2 id="issues-and-planning">Issues and Planning<a class="headerlink" href="#issues-and-planning" title="Permanent link">&para;</a></h2>
+<p>We use GitHub issues to track bugs and enhancement requests. Please provide as much context as possible when you open  an issue. The information you provide must be comprehensive enough to understand, reproduce the behavior and find related reports of  that issue for the assignee.
+Therefore, contributors may use but aren't restricted to the issue template provided by the Gardener on Metal maintainers.</p>
+<p>Issues and pull requests are tracked in the <a href="https://github.com/onmetal/virtual-controlplane/projects/1">backlog</a> for this project.</p>
                 
               
               
