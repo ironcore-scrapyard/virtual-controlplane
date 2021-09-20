@@ -1,4 +1,4 @@
-FROM squidfunk/mkdocs-material:7.2.6
+FROM squidfunk/mkdocs-material:7.2.7
 
 LABEL project=onmetal_virtual_controlplane_documentation
 
