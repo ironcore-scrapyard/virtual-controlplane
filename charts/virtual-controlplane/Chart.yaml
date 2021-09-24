@@ -2,7 +2,7 @@ apiVersion: v2
 name: virtual-controlplane
 description: A Helm chart for a Virtual Kubernetes controlplane
 type: application
-version: 0.1.4
+version: 0.1.5
 appVersion: "1.22.1"
 engine: gotpl
 home: https://github.com/onmetal/virtual-controlplane/

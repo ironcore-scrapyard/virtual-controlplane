@@ -10,7 +10,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: kuberntes-ca
+  name: kubernetes-ca
   namespace: {{ .Release.Namespace }}
 spec:
   isCA: true
