@@ -28,8 +28,8 @@ To install all the components mentioned above please follow the guides in the fo
 * [Install Cert-Manager](/virtual-controlplane/usage/cert-manager)
 * [Install Druid](/virtual-controlplane/usage/druid)
 * [Install Etcd](/virtual-controlplane/usage/etcd)
-* [Install Template Operator](/virtual-controlplane/usage/template-operator)
-* [Install Virtual Control Plane Components](/virtual-controlplane/usage/virtual-control-plane)
+* [Install Template Operator](/virtual-controlplane/usage/template)
+* [Install Virtual Control Plane Components](/virtual-controlplane/usage/vc)
 
 ## Access API Server
 
