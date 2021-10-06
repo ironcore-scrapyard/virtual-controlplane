@@ -1,0 +1,41 @@
+apiVersion: matryoshka.onmetal.de/v1alpha1
+kind: KubeControllerManager
+metadata:
+  name: kube-controller-manager
+spec:
+  generic:
+    controllers:
+      - "*"
+      - bootstrapsigner
+      - tokencleaner
+    kubeconfigSecret:
+      name: kube-controller-manager-kubeconfig
+  replicas: 1
+  shared:
+    controllerCredentials: ServiceAccount
+  version: 1.22.1
+  authentication:
+    skipLookup: true
+    kubeconfigSecret:
+      name: kube-controller-manager-kubeconfig
+  authorization:
+    kubeconfigSecret:
+      name: kube-controller-manager-kubeconfig
+  csrSigningController:
+    clusterSigningSecret:
+      name: kubernetes-ca
+  serviceAccountController:
+    rootCertificateSecret:
+      name: kubernetes-ca
+    privateKeySecret:
+      name: kubernetes-ca
+  overlay:
+    spec:
+      controllerManagerContainer:
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 128Mi

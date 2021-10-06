@@ -22,25 +22,6 @@ spec:
         app: virtual-controlplane
         component: kube-apiserver
     spec:
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              topologyKey: kubernetes.io/hostname
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - virtual-controlplane
-                - key: component
-                  operator: In
-                  values:
-                  - kube-apiserver
-      tolerations:
-      - effect: NoExecute
-        operator: Exists
       containers:
       - name: kube-apiserver
         image: {{ .Values.apiServer.image.repository }}:{{ .Values.apiServer.image.tag}}

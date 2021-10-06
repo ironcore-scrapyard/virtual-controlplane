@@ -1,0 +1,51 @@
+apiVersion: druid.gardener.cloud/v1alpha1
+kind: Etcd
+metadata:
+  name: etcd
+spec:
+  selector:
+    matchLabels:
+      app: etcd-statefulset
+      role: etcd
+  annotations:
+    app: etcd-statefulset
+    role: etcd
+  labels:
+    app: etcd-statefulset
+    role: etcd
+  etcd:
+    tls:
+      serverTLSSecretRef:
+        name: etcd-server-tls
+      clientTLSSecretRef:
+        name: etcd-client-tls
+      tlsCASecretRef:
+        name: etcd-ca
+    metrics: basic
+    defragmentationSchedule: "0 */24 * * *"
+    resources:
+    clientPort: 2379
+    serverPort: 2380
+    quota: 8Gi
+  backup:
+    compression:
+      policy: gzip
+    deltaSnapshotMemoryLimit: 1Gi
+    deltaSnapshotPeriod: 5m0s
+    fullSnapshotSchedule: 0 */24 * * *
+    garbageCollectionPeriod: 12h0m0s
+    garbageCollectionPolicy: Exponential
+    port: 8080
+    resources:
+      limits:
+        cpu: 500m
+        memory: 2Gi
+      requests:
+        cpu: 23m
+        memory: 128Mi
+  sharedConfig:
+    autoCompactionMode: periodic
+    autoCompactionRetention: 30m
+  replicas: 1
+  storageClass: standard
+  storageCapacity: 1Gi

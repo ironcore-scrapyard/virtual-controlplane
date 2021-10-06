@@ -1,0 +1,42 @@
+apiVersion: matryoshka.onmetal.de/v1alpha1
+kind: KubeAPIServer
+metadata:
+  name: kube-apiserver
+spec:
+  secureServing:
+    secret:
+      name: kube-apiserver-tls
+  authentication:
+    clientCertificateSecret:
+      name: kubernetes-ca
+    bootstrapToken: true
+    anonymous: true
+  etcd:
+    certificateAuthoritySecret:
+      name: etcd-ca
+    keySecret:
+      name: etcd-client-tls
+    servers:
+      - https://etcd-client:2379
+  replicas: 1
+  serviceAccount:
+    issuer: https://kube-apiserver:443
+    keySecret:
+      name: kube-apiserver-tls
+    signingKeySecret:
+      name: kube-apiserver-tls
+  version: 1.22.1
+  overlay:
+    metadata:
+      labels:
+        app: virtual-controlplane
+        component: kube-apiserver
+    spec:
+      apiServerContainer:
+        resources:
+          limits:
+            cpu: 1200m
+            memory: 2000Mi
+          requests:
+            cpu: 200m
+            memory: 512Mi
