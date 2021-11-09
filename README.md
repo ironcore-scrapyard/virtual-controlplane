@@ -1,8 +1,9 @@
 # virtual-controlplane
 
-![Gardener on Metal Logo](docs/assets/logo.png)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 [![GitHub License](https://img.shields.io/static/v1?label=License&message=Apache-2.0&color=blue&style=flat-square)](LICENSE)
+
+![Gardener on Metal Logo](docs/assets/logo.png)
 
 ## Overview
 
