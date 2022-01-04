@@ -643,10 +643,10 @@ building blocks of our virtual Kubernetes cluster.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>Before we begin with the installation it is recommended to override some of the default <a href="https://github.com/onmetal/virtual-controlplane/blob/main/charts/virtual-controlplane/values.yaml">values</a>.</p>
 <p>To do that we need to create a <code>values.yaml</code> file containing the following entries:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiServer</span><span class="p">:</span>
-  <span class="nt">externalDNSName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;external ingress DNS name&gt;</span>
-  <span class="nt">tls</span><span class="p">:</span>
-    <span class="nt">staticToken</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">securePasswordToken</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiServer</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">externalDNSName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;external ingress DNS name&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">tls</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">staticToken</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">securePasswordToken</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note<p>The helm installation will run through without changing those values. This might be OK if you deploy it into a local Minikube or Kind cluster. However you won't be able to access your cluster since the <code>Ingress</code> won't be configured correctly. Note, that there is a huge security risk as the static token can be guessed relatively easy exposing your API server to fraudulent access.</p>

@@ -623,13 +623,13 @@ helm repo update
 <p>The <code>template-operator</code> chart can be configured by overriding the <a href="https://github.com/onmetal/template-operator/blob/main/charts/template-operator/values.yaml">default values</a>.</p>
 <p>The RBAC rules are important configuration point, as we need to specify which objects the <code>template-operator</code> is allowed to watch and modify.</p>
 <p>Here is an example, as defined in the default <code>values.yaml</code>, to allow to watch and modify <code>Secrets</code> and <code>ConfigMaps</code> in your cluster.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">rbac</span><span class="p">:</span>
-  <span class="nt">adminGroupResouces</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">groups</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;&quot;</span>
-      <span class="nt">resources</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">secrets</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">configmaps</span>
+<div class="highlight"><pre><span></span><code><span class="nt">rbac</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">adminGroupResouces</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secrets</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configmaps</span><span class="w"></span>
 </code></pre></div>
 <h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
 <p>To upgrade your <code>template-operator</code> deployment run:</p>
