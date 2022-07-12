@@ -14,16 +14,23 @@ spec:
     app: etcd-statefulset
     role: etcd
   etcd:
-    tls:
+    clientUrlTls:
       serverTLSSecretRef:
         name: etcd-server-tls
-      clientTLSSecretRef:
-        name: etcd-client-tls
       tlsCASecretRef:
         name: etcd-ca
+      clientTLSSecretRef:
+        name: etcd-client-tls
+    peerUrlTls:
+      serverTLSSecretRef:
+        name: etcd-server-tls
+      tlsCASecretRef:
+        name: etcd-ca
+      clientTLSSecretRef:
+        name: etcd-client-tls
     metrics: basic
     defragmentationSchedule: "0 */24 * * *"
-    resources:
+    resources: {}
     clientPort: 2379
     serverPort: 2380
     quota: 8Gi
